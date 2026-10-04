@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fix the list not loading | Proxy list</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      background: #0e0e13;
+      color: #e8e8ee;
+      font: 15px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 26px; margin: 0 0 8px; }
+    h2 { font-size: 19px; margin: 32px 0 8px; padding-top: 8px; border-top: 1px solid #2a2a36; }
+    h3 { font-size: 15px; margin: 18px 0 4px; }
+    p, li { color: #cfcfd8; }
+    ol, ul { padding-left: 22px; }
+    li { margin: 4px 0; }
+    code, kbd {
+      background: #1d1d27;
+      border: 1px solid #2f2f3d;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 13px;
+    }
+    a { color: #a78bfa; }
+    .note {
+      background: #17171f;
+      border: 1px solid #2f2f3d;
+      border-left: 3px solid #7c3aed;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 14px 0;
+    }
+    nav a { margin-right: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>The list won't load</h1>
+    <p>
+      If the Proxy list shows an empty page, a spinner that never finishes, or an error, old saved data from a
+      previous visit is the most common cause. The site normally detects this and resets its own data
+      automatically, or shows a <strong>Reset saved data &amp; reload</strong> button. If that didn't work, follow the
+      steps below.
+    </p>
+
+    <nav>
+      <a href="#quick">Quick fixes</a>
+      <a href="#chrome">Chrome</a>
+      <a href="#edge">Edge</a>
+      <a href="#firefox">Firefox</a>
+      <a href="#safari">Safari</a>
+    </nav>
+
+    <h2 id="quick">Quick fixes</h2>
+    <ol>
+      <li>Open the list's <strong>Settings</strong> and click <strong>Reset saved data</strong> (if the page loads far enough to show it).</li>
+      <li>Reload using the proxy's own reload button, not only the browser's.</li>
+      <li>Open the list in a private window (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> in Chrome/Edge, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Firefox, <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> in Safari). If it works there, the problem is saved data, and the steps below will fix your normal window.</li>
+    </ol>
+
+    <div class="note">
+      <strong>Using the list through a web proxy?</strong> Clear the data for the <em>proxy's</em> address (the one in your
+      browser's address bar, for example <code>proxy.example.com</code>), not for <code>github.io</code>. Proxies keep each
+      site's saved data under their own address. Clearing it also resets that proxy's own settings (such as its
+      chosen transport or history).
+    </div>
+
+    <h2 id="chrome">Google Chrome (Windows, macOS, ChromeOS, Linux)</h2>
+    <h3>Option 1: from the address bar</h3>
+    <ol>
+      <li>Open the site (or proxy) where the list isn't loading.</li>
+      <li>Click the icon to the left of the address (the <strong>View site information</strong> / tune icon).</li>
+      <li>Choose <strong>Site settings</strong>.</li>
+      <li>Click <strong>Delete data</strong> and confirm.</li>
+      <li>Close the tab, open it again, and load the list.</li>
+    </ol>
+    <h3>Option 2: from Chrome settings</h3>
+    <ol>
+      <li>Go to <code>chrome://settings/content/all</code>.</li>
+      <li>Search for the site's or proxy's address.</li>
+      <li>Click the trash icon next to it and confirm.</li>
+    </ol>
+    <h3>Option 3: developer tools</h3>
+    <ol>
+      <li>On the broken page, press <kbd>F12</kbd> (or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>, <kbd>⌘</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac).</li>
+      <li>Open the <strong>Application</strong> tab, then <strong>Storage</strong> in the left sidebar.</li>
+      <li>Click <strong>Clear site data</strong>, then reload.</li>
+    </ol>
+    <p>On Android: tap <strong>⋮ → Settings → Site settings → All sites</strong>, pick the address, and tap <strong>Delete</strong> / <strong>Clear &amp; reset</strong>.</p>
+
+    <h2 id="edge">Microsoft Edge</h2>
+    <h3>Option 1: from the address bar</h3>
+    <ol>
+      <li>Click the lock icon to the left of the address.</li>
+      <li>Choose <strong>Cookies and site data</strong>, then <strong>Manage cookies and site data</strong> (or <strong>Permissions for this site</strong>).</li>
+      <li>Delete the stored data for the site or proxy, then reload.</li>
+    </ol>
+    <h3>Option 2: from Edge settings</h3>
+    <ol>
+      <li>Go to <code>edge://settings/content/all</code> (or <code>edge://settings/siteData</code>).</li>
+      <li>Search for the site's or proxy's address.</li>
+      <li>Click the trash icon (or <strong>Delete</strong>) and confirm.</li>
+    </ol>
+    <p>Edge's developer tools work the same as Chrome's: <kbd>F12</kbd> → <strong>Application</strong> → <strong>Storage</strong> → <strong>Clear site data</strong>.</p>
+
+    <h2 id="firefox">Mozilla Firefox</h2>
+    <h3>Option 1: from the address bar</h3>
+    <ol>
+      <li>Click the lock icon to the left of the address.</li>
+      <li>Choose <strong>Clear cookies and site data…</strong>.</li>
+      <li>Click <strong>Remove</strong>, then reload.</li>
+    </ol>
+    <h3>Option 2: from Firefox settings</h3>
+    <ol>
+      <li>Go to <code>about:preferences#privacy</code>.</li>
+      <li>Under <strong>Cookies and Site Data</strong>, click <strong>Manage Data…</strong>.</li>
+      <li>Search for the site's or proxy's address, select it, click <strong>Remove Selected</strong>, then <strong>Save Changes</strong>.</li>
+    </ol>
+    <p>On Android: tap <strong>⋮ → Settings → Delete browsing data</strong>, or open the site, tap the lock icon, and choose <strong>Clear cookies and site data</strong>.</p>
+
+    <h2 id="safari">Safari</h2>
+    <h3>macOS</h3>
+    <ol>
+      <li>In the menu bar, choose <strong>Safari → Settings…</strong> (or <strong>Preferences…</strong>).</li>
+      <li>Open the <strong>Privacy</strong> tab and click <strong>Manage Website Data…</strong>.</li>
+      <li>Search for the site's or proxy's address, select it, click <strong>Remove</strong>, then <strong>Done</strong>.</li>
+      <li>Reload the page.</li>
+    </ol>
+    <h3>iPhone and iPad</h3>
+    <ol>
+      <li>Open the <strong>Settings</strong> app, then <strong>Apps → Safari</strong> (on older versions, just <strong>Safari</strong>).</li>
+      <li>Tap <strong>Advanced → Website Data</strong>.</li>
+      <li>Search for the site's or proxy's address, swipe left on it, and tap <strong>Delete</strong>.</li>
+      <li>Reopen Safari and load the list.</li>
+    </ol>
+
+    <h2>Still not working?</h2>
+    <ul>
+      <li>School or work devices may block clearing site data. Try a private window or a different proxy from the list.</li>
+      <li>The proxy itself may be down or incompatible. Try another proxy or transport (for example, epoxy or libcurl instead of wisp-js).</li>
+      <li>Report it through the <a href="../contribute/">contribute page</a> and include the proxy's address and any error message shown.</li>
+    </ul>
+
+    <p><a href="../">← Back to the Proxy list</a></p>
+  </main>
+</body>
+</html>

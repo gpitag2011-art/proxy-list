@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+    <script src="../data-loader.js"></script>
+    <script src="../debug-overlays.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contribute | Proxy list</title>
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <style>
+    :root {
+      --bg: #111111;
+      --surface: #1a1a1a;
+      --border: #2e2e2e;
+      --text: #e8e8e8;
+      --muted: #9a9a9a;
+      --accent: #6cb3ff;
+      --ok: #3ecf8e;
+      --warn: #ffd57e;
+      --font: "Segoe UI", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      padding: 1.2rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    h1 { margin: 0 0 0.35rem; font-size: 1.35rem; }
+    .sub { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.2rem 2rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0.6rem 0 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      background: #141414;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    /* Author .btn { display } otherwise overrides the HTML hidden attribute. */
+    .btn[hidden],
+    [hidden] {
+      display: none !important;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-primary {
+      border-color: #2d5588;
+      color: var(--accent);
+      background: #2a2a2a;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 980px) {
+      .grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      padding: 0.9rem 1rem;
+    }
+    .card h2 {
+      margin: 0 0 0.6rem;
+      font-size: 1.05rem;
+    }
+    .muted { color: var(--muted); }
+    .rules {
+      margin: 0.2rem 0 0;
+      padding-left: 1.1rem;
+    }
+    .rules li { margin: 0.45rem 0; }
+    code {
+      background: #141414;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1rem 0.35rem;
+      font-size: 0.82em;
+    }
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+    }
+    .pill {
+      border: 1px solid #5f4b2d;
+      color: var(--warn);
+      background: #2a2215;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      padding: 0.14rem 0.5rem;
+    }
+    .contributors-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+    }
+    .contributors-meta {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th, td {
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 0.45rem;
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-weight: 600; }
+    td.count {
+      color: var(--ok);
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    td.count a.count-link {
+      color: inherit;
+      font-weight: inherit;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(62, 207, 142, 0.5);
+    }
+    td.count a.count-link:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .contributor-you {
+      margin-left: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .back-row {
+      margin-top: 0.9rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    a { color: var(--accent); word-break: break-word; }
+
+    .submit-card { margin-top: 1rem; }
+    .card-heading-with-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 0.6rem;
+    }
+    .card-heading-with-icon h2 {
+      margin: 0;
+    }
+    .card-heading-icon {
+      width: 1.35rem;
+      height: 1.35rem;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+    .submit-form label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0.65rem 0 0.3rem;
+    }
+    .submit-form input[type="text"],
+    .submit-form input[type="url"],
+    .submit-form select,
+    .submit-form textarea {
+      width: 100%;
+      font: inherit;
+      font-size: 0.88rem;
+      background: #141414;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.65rem;
+    }
+    .submit-form textarea { min-height: 4.5rem; resize: vertical; }
+    .submit-form textarea.feedback-body { min-height: 7rem; }
+    .feedback-type-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 0.85rem;
+      margin: 0.35rem 0 0.15rem;
+      font-size: 0.86rem;
+    }
+    .feedback-type-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin: 0;
+      color: var(--text);
+    }
+    .provider-mode {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 0.35rem 0 0.15rem;
+      font-size: 0.86rem;
+    }
+    .provider-mode label { display: inline-flex; align-items: center; gap: 0.35rem; margin: 0; color: var(--text); }
+    .url-chip-list {
+      display: contents;
+    }
+    .url-chip-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 2.55rem;
+      width: 100%;
+      font: inherit;
+      font-size: 0.88rem;
+      background: #141414;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.35rem 0.45rem;
+      cursor: text;
+    }
+    .url-chip-box:focus-within {
+      border-color: var(--accent);
+      outline: none;
+    }
+    .url-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      max-width: 100%;
+      border: 1px solid #2d5588;
+      background: #1a2838;
+      color: #9fd4ff;
+      border-radius: 6px;
+      padding: 0.2rem 0.35rem 0.2rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+    .url-chip:hover,
+    .url-chip:focus {
+      border-color: #4a8fd4;
+      background: #203448;
+      outline: none;
+    }
+    .url-chip-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: min(22rem, 70vw);
+    }
+    .url-chip-remove {
+      flex-shrink: 0;
+      border: 0;
+      background: transparent;
+      color: #9fd4ff;
+      cursor: pointer;
+      font: inherit;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0 0.15rem;
+      border-radius: 4px;
+    }
+    .url-chip-remove:hover {
+      background: #243447;
+      color: #fff;
+    }
+    .url-chip-input {
+      flex: 1 1 10rem;
+      min-width: 8rem;
+      border: 0 !important;
+      background: transparent !important;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.88rem;
+      padding: 0.25rem 0.2rem !important;
+      outline: none;
+      box-shadow: none;
+    }
+    .submit-status {
+      margin-top: 0.75rem;
+      font-size: 0.86rem;
+      border-radius: 8px;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--border);
+      background: #141414;
+    }
+    .submit-status.ok { border-color: #2d6b4a; color: var(--ok); }
+    .submit-status.warn { border-color: #5f4b2d; color: var(--warn); }
+    .submit-status.err { border-color: #6b2d2d; color: #ff9b9b; }
+    .submit-history { margin-top: 1rem; }
+    .submit-history table { font-size: 0.8rem; }
+    .status-pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 0.1rem 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .status-pill.pending { background: #2a2a15; color: var(--warn); border: 1px solid #5f4b2d; }
+    .status-pill.approved { background: #152a1f; color: var(--ok); border: 1px solid #2d6b4a; }
+    .status-pill.rejected { background: #2a1515; color: #ff9b9b; border: 1px solid #6b2d2d; }
+    .signin-prompt { margin: 0.5rem 0 0; }
+    .signin-prompt a { font-weight: 600; }
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Contribute</h1>
+    <p class="sub">Submit links, review contributors, and follow the formatting/rules in one place.</p>
+  </header>
+  <main>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://github.com/yourworstnightmare1/proxy-list/fork" rel="noopener noreferrer" target="_blank">Fork on GitHub</a>
+      <a class="btn" href="https://github.com/yourworstnightmare1/proxy-list/blob/main/CONTRIBUTING.md" rel="noopener noreferrer" target="_blank">Full CONTRIBUTING.md</a>
+      <a class="btn" href="../admin/submissions.html" id="adminLinksBtn" hidden style="display:none">Review link submissions</a>
+      <a class="btn" href="../admin/feedback.html" id="adminFeedbackBtn" hidden style="display:none">Review feedback</a>
+    </div>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="rulesHeading">
+        <h2 id="rulesHeading">Contribution rules</h2>
+        <p class="muted">Short checklist from the project contribution guide.</p>
+        <ol class="rules">
+          <li>Do not submit links that already exist in the list.</li>
+          <li>Links must be working and active when submitted.</li>
+          <li>Keep formatting consistent with <code>list.md</code> table structure.</li>
+          <li>For locked links, include valid username/password or do not submit them.</li>
+          <li>Give a contributor name/alias so credit can be assigned.</li>
+        </ol>
+        <p class="muted">Blocked domains</p>
+        <div class="pill-list">
+          <span class="pill">b-cdn.net</span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="howHeading">
+        <h2 id="howHeading">How to contribute</h2>
+        <ol class="rules">
+          <li>Sign in and use the submission form below for quick review.</li>
+          <li>Use GitHub for direct edits and pull requests.</li>
+          <li>For GitHub, add rows in the existing table format under the right section.</li>
+          <li>If you add a new section, include emoji + note table + links table.</li>
+        </ol>
+        <p class="muted">Categories and capabilities are assigned during review — you only need the URL and provider.</p>
+      </section>
+    </div>
+
+    <section class="card submit-card" aria-labelledby="submitHeading">
+      <h2 id="submitHeading">Submit links for review</h2>
+      <p class="muted">Submit one or more working proxy URLs under an existing provider or propose a new one. Duplicate URLs (including ones already on the list) are rejected. We compare full URLs, not whole domains, so multiple proxies on the same domain with different paths or subdomains are allowed.</p>
+      <div id="submitSignInPrompt" class="signin-prompt muted">
+        <a href="../login/?next=../contribute/">Sign in</a> with GitHub, Google, or email to submit links.
+      </div>
+      <div id="submitLoadingNotice" class="submit-status" hidden>Checking your account…</div>
+      <div id="submitBannedNotice" class="submit-status err" hidden></div>
+      <div id="submitStatus" class="submit-status" hidden role="status"></div>
+      <form id="linkSubmitForm" class="submit-form" hidden>
+        <label for="submitUrlInput">Proxy URLs</label>
+        <p class="muted" style="font-size:0.8rem;margin:0 0 0.35rem">
+          Type a URL and press Space or Enter to add it as a chip. Click a chip to edit it, or × to remove. Paste several at once if you want.
+        </p>
+        <div id="submitUrlChipBox" class="url-chip-box" aria-label="Proxy URL list">
+          <div id="submitUrlChips" class="url-chip-list" aria-live="polite"></div>
+          <input id="submitUrlInput" name="urlDraft" type="text" inputmode="url" autocomplete="off" placeholder="https://example.com/path" />
+        </div>
+        <label for="submitContributorName">Your name (for list credit) <strong>It is strongly recommended you don't use your real name to protect your privacy.</strong></label>
+        <input id="submitContributorName" name="contributorName" type="text" maxlength="120" autocomplete="nickname" placeholder="Display name or alias" required />
+        <label for="submitGithubUrl">GitHub profile URL <span class="muted">(optional)</span></label>
+        <input id="submitGithubUrl" name="githubUrl" type="url" inputmode="url" maxlength="200" autocomplete="url" placeholder="https://github.com/yourusername" />
+        <p class="muted" style="font-size:0.8rem;margin:-0.15rem 0 0.35rem">Optional — must be a real https://github.com/username profile (we check that the account exists). Repo or other GitHub URLs are rejected.</p>
+        <fieldset style="border:0;margin:0;padding:0;">
+          <legend class="muted" style="font-size:0.82rem;margin-bottom:0.25rem;">Provider</legend>
+          <div class="provider-mode">
+            <label><input type="radio" name="providerMode" value="existing" checked /> Existing provider</label>
+            <label><input type="radio" name="providerMode" value="new" /> New provider</label>
+          </div>
+        </fieldset>
+        <div id="existingProviderWrap">
+          <label for="submitProviderSelect">Choose provider</label>
+          <select id="submitProviderSelect" aria-label="Existing provider"></select>
+        </div>
+        <div id="newProviderWrap" hidden>
+          <label for="submitNewProvider">New provider name</label>
+          <input id="submitNewProvider" type="text" maxlength="120" placeholder="e.g. 🌙 My Proxy" />
+        </div>
+        <label for="submitNote">Optional note for reviewers</label>
+        <textarea id="submitNote" maxlength="500" placeholder="Login details, region, or anything else helpful (no passwords unless the link is locked)."></textarea>
+        <div class="actions" style="margin-top:0.85rem;">
+          <button class="btn btn-primary" type="submit" id="submitBtn">Submit for review</button>
+        </div>
+      </form>
+      <div class="submit-history" id="submitHistoryWrap" hidden>
+        <h3 style="margin:0.85rem 0 0.45rem;font-size:0.95rem;">Your recent submissions</h3>
+        <table>
+          <thead>
+            <tr><th>URL</th><th>Provider</th><th>Status</th></tr>
+          </thead>
+          <tbody id="submitHistoryBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card submit-card" id="feedback" aria-labelledby="feedbackHeading">
+      <div class="card-heading-with-icon">
+        <svg class="card-heading-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+        </svg>
+        <h2 id="feedbackHeading">Report a bug or request a feature</h2>
+      </div>
+      <p class="muted">
+        Found something broken, or want a quality-of-life improvement? Send a report here.
+        Bug reports and feature requests are stored for the maintainer to review (same Firebase project as link submissions).
+      </p>
+      <div id="feedbackSignInPrompt" class="signin-prompt muted">
+        <a href="../login/?next=../contribute/%23feedback">Sign in</a> with GitHub, Google, or email to send feedback.
+      </div>
+      <div id="feedbackLoadingNotice" class="submit-status" hidden>Checking your account…</div>
+      <div id="feedbackBannedNotice" class="submit-status err" hidden></div>
+      <div id="feedbackStatus" class="submit-status" hidden role="status"></div>
+      <form id="feedbackForm" class="submit-form" hidden>
+        <fieldset style="border:0;margin:0;padding:0;">
+          <legend class="muted" style="font-size:0.82rem;margin-bottom:0.25rem;">Request type</legend>
+          <div class="feedback-type-row">
+            <label><input type="radio" name="feedbackType" value="bug" checked /> Bug fix</label>
+            <label><input type="radio" name="feedbackType" value="feature" /> Feature request</label>
+            <label><input type="radio" name="feedbackType" value="qol" /> QoL improvement</label>
+          </div>
+        </fieldset>
+        <label for="feedbackTitle">Short title</label>
+        <input id="feedbackTitle" name="title" type="text" maxlength="200" required placeholder="e.g. Settings filter dropdown is empty" />
+        <label for="feedbackBody">Details</label>
+        <textarea
+          id="feedbackBody"
+          class="feedback-body"
+          name="body"
+          maxlength="2000"
+          required
+          placeholder="What happened, what you expected, steps to reproduce, or the feature idea…"
+        ></textarea>
+        <div class="actions" style="margin-top:0.85rem;">
+          <button class="btn btn-primary" type="submit" id="feedbackSubmitBtn">Send feedback</button>
+        </div>
+      </form>
+      <div class="submit-history" id="feedbackHistoryWrap" hidden>
+        <h3 style="margin:0.85rem 0 0.45rem;font-size:0.95rem;">Your recent feedback</h3>
+        <table>
+          <thead>
+            <tr><th>Type</th><th>Title</th><th>Status</th></tr>
+          </thead>
+          <tbody id="feedbackHistoryBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card submit-card" id="appeal" aria-labelledby="appealHeading">
+      <h2 id="appealHeading">Appeal suspension</h2>
+      <p class="muted">
+        If your account or form access is suspended, explain why it should be lifted. You may submit <strong>one appeal per suspension</strong>. Appeals are reviewed by the list maintainer.
+      </p>
+      <div id="appealSignInPrompt" class="signin-prompt muted">
+        <a href="../login/?next=../contribute/%23appeal">Sign in</a> to submit an appeal.
+      </div>
+      <div id="appealNotBannedNotice" class="submit-status" hidden>You are not currently suspended.</div>
+      <div id="appealLoadingNotice" class="submit-status" hidden>Checking your account…</div>
+      <div id="appealStatus" class="submit-status" hidden role="status"></div>
+      <form id="appealForm" class="submit-form" hidden>
+        <label for="appealBody">Why should your suspension be lifted?</label>
+        <textarea
+          id="appealBody"
+          name="body"
+          maxlength="2000"
+          required
+          placeholder="Explain what happened and why your access should be restored…"
+          style="min-height:7rem;"
+        ></textarea>
+        <div class="actions" style="margin-top:0.85rem;">
+          <button class="btn btn-primary" type="submit" id="appealSubmitBtn">Submit appeal</button>
+        </div>
+      </form>
+      <p class="muted" id="appealPendingNote" hidden style="margin-top:0.65rem;font-size:0.82rem;">
+        You already submitted an appeal for this suspension (one appeal per ban).
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="contributorsHeading" style="margin-top:1rem;">
+      <div class="contributors-head">
+        <h2 id="contributorsHeading" style="margin:0;">Contributors</h2>
+        <div id="contributorsMeta" class="contributors-meta">Loading contributors…</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Contributor</th>
+            <th class="count">Links</th>
+          </tr>
+        </thead>
+        <tbody id="contributorsBody">
+          <tr><td class="muted" colspan="2">Loading…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="back-row">
+      <a class="btn" href="../">Back to proxy list</a>
+      <a class="btn" href="../unsorted.html">View unsorted links</a>
+    </div>
+  </main>
+
+  <script src="../vendor/purify.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="../firebase-config.example.js"></script>
+  <script src="../firebase-config.local.js"></script>
+  <script src="../submission-utils.js"></script>
+  <script>
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function escapeAttr(s) {
+      return escapeHtml(s).replace(/'/g, "&#39;");
+    }
+
+    function importSanitizedNodes(nodes) {
+      return Array.from(nodes || []).map((node) => document.importNode(node, true));
+    }
+
+    function nodesFromSanitizedBodyHtml(raw) {
+      if (!raw || !window.DOMPurify) return [];
+      const clean = DOMPurify.sanitize(String(raw));
+      if (!clean) return [];
+      const doc = new DOMParser().parseFromString("<body>" + clean + "</body>", "text/html");
+      return importSanitizedNodes(doc.body.childNodes);
+    }
+
+    function nodesFromSanitizedTableSection(sectionTag, raw) {
+      const tag = String(sectionTag || "").toLowerCase();
+      if (!raw || !window.DOMPurify || (tag !== "thead" && tag !== "tbody")) return [];
+      const clean = DOMPurify.sanitize("<table><" + tag + ">" + String(raw) + "</" + tag + "></table>");
+      if (!clean) return [];
+      const doc = new DOMParser().parseFromString(clean, "text/html");
+      const section = doc.querySelector(tag);
+      return section ? importSanitizedNodes(section.childNodes) : [];
+    }
+
+    function setHtml(el, html) {
+      if (!el) return;
+      if (!window.DOMPurify) {
+        el.replaceChildren();
+        return;
+      }
+      const raw = html == null ? "" : String(html);
+      const tag = el.tagName;
+      let nodes;
+      if (tag === "THEAD") nodes = nodesFromSanitizedTableSection("thead", raw);
+      else if (tag === "TBODY") nodes = nodesFromSanitizedTableSection("tbody", raw);
+      else nodes = nodesFromSanitizedBodyHtml(raw);
+      el.replaceChildren(...nodes);
+    }
+
+    function normalizeContributorName(raw) {
+      let s = String(raw || "").trim();
+      if (!s) return "Anonymous Contributor";
+      // Complete markdown link: [Name](https://...)
+      let m = s.match(/^\[([^\]]+)\]\(([^)]+)\)\s*$/);
+      if (m) return String(m[1] || "").trim() || "Anonymous Contributor";
+      // Truncated / unclosed markdown that previously leaked into totals keys.
+      m = s.match(/^\[([^\]]+)\]\((.*)$/);
+      if (m) return String(m[1] || "").trim() || "Anonymous Contributor";
+      return s;
+    }
+
+    function githubUsernameFromHref(href) {
+      const s = String(href || "").trim();
+      const match = s.match(/^https?:\/\/(?:www\.)?github\.com\/(?:users\/)?([^/?#]+)/i);
+      if (!match) return "";
+      const login = match[1];
+      if (/^(orgs|settings|features|marketplace|sponsors|login|signup|new)$/i.test(login)) return "";
+      return login;
+    }
+
+    function contributorLabel(name, href) {
+      return githubUsernameFromHref(href) || normalizeContributorName(name);
+    }
+
+    let viewersGithubLogin = "";
+    let cachedContributorList = null;
+
+    function githubLoginFromUser(user) {
+      if (!user) return "";
+      const gh = (user.providerData || []).find((p) => p.providerId === "github.com");
+      if (!gh) return "";
+      if (gh.displayName) return String(gh.displayName).trim();
+      const email = gh.email ? String(gh.email).split("@")[0] : "";
+      return email;
+    }
+
+    function isGithubSignedInUser(user) {
+      return !!(user && (user.providerData || []).some((p) => p.providerId === "github.com"));
+    }
+
+    function mainListSearchHrefForContributor(name) {
+      try {
+        const u = new URL("../", window.location.href);
+        u.searchParams.set("q", String(name || "").trim());
+        return u.pathname + u.search + u.hash;
+      } catch (_) {
+        return "../?q=" + encodeURIComponent(String(name || "").trim());
+      }
+    }
+
+    function contributorMatchesViewer(row) {
+      if (!viewersGithubLogin) return false;
+      const login = viewersGithubLogin.toLowerCase();
+      if (String(row.name || "").trim().toLowerCase() === login) return true;
+      const hrefLogin = githubUsernameFromHref(row.href);
+      if (hrefLogin && hrefLogin.toLowerCase() === login) return true;
+      const href = String(row.href || "").toLowerCase();
+      return href.includes("github.com/" + login);
+    }
+
+    function renderContributorRows(bodyEl, list) {
+      cachedContributorList = list;
+      setHtml(
+        bodyEl,
+        list
+          .map((r) => {
+            const label = escapeHtml(r.name);
+            const youMark = contributorMatchesViewer(r) ? ' <span class="contributor-you">YOU</span>' : "";
+            const listHref = escapeAttr(mainListSearchHrefForContributor(r.name));
+            const nameCell = r.href
+              ? '<a href="' + escapeAttr(r.href) + '" rel="noopener noreferrer" target="_blank">' + label + "</a>" + youMark
+              : '<a href="' +
+                listHref +
+                '" title="Show this contributor&#39;s links on the main list">' +
+                label +
+                "</a>" +
+                youMark;
+            const countCell =
+              '<a class="count-link" href="' +
+              listHref +
+              '" title="Open the main list filtered to this contributor&#39;s links">' +
+              r.count +
+              "</a>";
+            return "<tr><td>" + nameCell + '</td><td class="count">' + countCell + "</td></tr>";
+          })
+          .join("")
+      );
+    }
+
+    function refreshContributorYouMarks() {
+      const bodyEl = document.getElementById("contributorsBody");
+      if (bodyEl && cachedContributorList) renderContributorRows(bodyEl, cachedContributorList);
+    }
+
+    function initViewerAuth() {
+      const cfg = typeof window !== "undefined" && window.__FIREBASE_CONFIG__;
+      if (!cfg || !cfg.apiKey || typeof firebase === "undefined") return;
+      try {
+        if (!firebase.apps.length) firebase.initializeApp(cfg);
+        firebase.auth().onAuthStateChanged((user) => {
+          viewersGithubLogin = isGithubSignedInUser(user) ? githubLoginFromUser(user) : "";
+          refreshContributorYouMarks();
+        });
+      } catch (_) {}
+    }
+
+    async function loadContributors() {
+      const metaEl = document.getElementById("contributorsMeta");
+      const bodyEl = document.getElementById("contributorsBody");
+      try {
+        const totalsRes = await fetch("../contributor_link_totals.json");
+        if (totalsRes.ok) {
+          const totalsPayload = await totalsRes.json();
+          const raw = totalsPayload && totalsPayload.contributors;
+          if (raw && typeof raw === "object" && !Array.isArray(raw)) {
+            const byName = new Map();
+            for (const key of Object.keys(raw)) {
+              const v = raw[key];
+              let count = 0;
+              let href = "";
+              if (typeof v === "number") {
+                count = v;
+              } else if (v && typeof v === "object") {
+                count = Number(v.links_total != null ? v.links_total : v.count) || 0;
+                const u = v.contributor_url;
+                if (u && /^https?:\/\//i.test(String(u).trim())) href = String(u).trim();
+              }
+              const name = contributorLabel(key, href);
+              if (!byName.has(name)) byName.set(name, { name, count: 0, href: "" });
+              const entry = byName.get(name);
+              entry.count = Math.max(entry.count, count);
+              if (!entry.href && href) entry.href = href;
+            }
+            const list = [...byName.values()].sort(
+              (a, b) => b.count - a.count || a.name.localeCompare(b.name)
+            );
+
+            if (!list.length) {
+              setHtml(bodyEl, '<tr><td class="muted" colspan="2">No contributors found yet.</td></tr>');
+              metaEl.textContent = "0 contributors";
+              return;
+            }
+
+            const sumLifetime = list.reduce((s, r) => s + r.count, 0);
+            renderContributorRows(bodyEl, list);
+
+            metaEl.textContent =
+              list.length +
+              " contributors • " +
+              sumLifetime +
+              " cumulative links credited (counts do not go down when links are removed)";
+            return;
+          }
+        }
+
+        const json = await ProxyListData.fetchListPayload();
+        const links = ProxyListData.isCompactPayload(json)
+          ? ProxyListData.expandAllLinks(json)
+          : Array.isArray(json)
+            ? json
+            : json.links || [];
+        const byName = new Map();
+        let totalRows = 0;
+        for (const row of links) {
+          const href = row && row.contributor_url ? String(row.contributor_url).trim() : "";
+          const name = contributorLabel(row && row.contributor, href);
+          if (!byName.has(name)) byName.set(name, { count: 0, href: "" });
+          const entry = byName.get(name);
+          entry.count += 1;
+          if (!entry.href && /^https?:\/\//i.test(href)) entry.href = href;
+          totalRows += 1;
+        }
+
+        const list = [...byName.entries()]
+          .map(([name, data]) => ({ name, count: data.count, href: data.href }))
+          .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+        if (!list.length) {
+          setHtml(bodyEl, '<tr><td class="muted" colspan="2">No contributors found yet.</td></tr>');
+          metaEl.textContent = "0 contributors";
+          return;
+        }
+
+        renderContributorRows(bodyEl, list);
+
+        metaEl.textContent =
+          list.length + " contributors • " + totalRows + " links on the list (live count)";
+      } catch (err) {
+        setHtml(
+          bodyEl,
+          '<tr><td class="muted" colspan="2">Failed to load contributors. ' +
+            escapeHtml(err && err.message ? err.message : String(err)) +
+            "</td></tr>"
+        );
+        metaEl.textContent = "Could not load contributor summary";
+      }
+    }
+
+    initViewerAuth();
+    loadContributors();
+  </script>
+  <script src="./submit-form.js"></script>
+  <script src="./feedback-form.js"></script>
+  <script src="./appeal-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.token
+# Accidental shell redirect / export dump (e.g. firebase auth:export -)
+/-
+.DS_Store
+__pycache__/
+node_modules/
+secrets
+vsce-debug.log
+.wrangler/
+.dev.vars
+deploy/webhook/.env
+.venv/proxy-list/
+scripts/batch_links_*.txt
+link_check_abort.json
+commit_info.json
+commit_info.txt
+.WORDS.md
+.env
+.env.local
+streamdeck.ps1
+_tmp
+docs/welcome-demo/*.mp4
+
+# ThreatFeed discovery output
+scripts/threatfeed_candidates.txt

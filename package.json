@@ -1,0 +1,25 @@
+{
+  "name": "proxy-list",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "node -e \"console.log('Static site: publish the docs/ folder (no compile step).')\"",
+    "build:filter-stats": "python scripts/build_filter_stats.py",
+    "dev": "wrangler dev",
+    "deploy:cloudflare": "wrangler deploy"
+  },
+  "dependencies": {
+    "firebase": "^12.12.1"
+  },
+  "devDependencies": {
+    "wrangler": "^4.131.1"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1",
+    "ws": "^8.21.0",
+    "protobufjs": "^7.6.5",
+    "websocket-driver": "^0.7.5",
+    "sharp": "^0.35.4",
+    "undici": "^7.29.0"
+  }
+}

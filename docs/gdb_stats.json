@@ -1,0 +1,1700 @@
+{
+  "generated_at": "2026-10-04T04:00:50Z",
+  "snapshot_date": "2026-10-04",
+  "catalog_count": 22,
+  "total_entries": 30243,
+  "unique_games": 25952,
+  "catalogs": [
+    {
+      "tag": "gdb:unblockedzone",
+      "label": "Unblockedzone",
+      "count": 0,
+      "empty": false
+    },
+    {
+      "tag": "gdb:gn-math",
+      "label": "gn-math",
+      "count": 837,
+      "empty": false
+    },
+    {
+      "tag": "gdb:luminsdk",
+      "label": "Lumin SDK",
+      "count": 837,
+      "empty": false
+    },
+    {
+      "tag": "gdb:noahs-tutoring",
+      "label": "Noah's Tutoring",
+      "count": 406,
+      "empty": false
+    },
+    {
+      "tag": "gdb:elite-games",
+      "label": "Elite Games",
+      "count": 325,
+      "empty": false
+    },
+    {
+      "tag": "gdb:ultimate-game-stash",
+      "label": "Ultimate Game Stash",
+      "count": 2446,
+      "empty": false
+    },
+    {
+      "tag": "gdb:seraph",
+      "label": "Seraph",
+      "count": 500,
+      "empty": false
+    },
+    {
+      "tag": "gdb:chicken-kings-vault",
+      "label": "Chicken King's Vault",
+      "count": 821,
+      "empty": false
+    },
+    {
+      "tag": "gdb:lucide",
+      "label": "Lucide",
+      "count": 837,
+      "empty": false
+    },
+    {
+      "tag": "gdb:sdxp",
+      "label": "SDXP",
+      "count": 0,
+      "empty": true
+    },
+    {
+      "tag": "gdb:duckmath",
+      "label": "DuckMath",
+      "count": 498,
+      "empty": false
+    },
+    {
+      "tag": "gdb:ccported",
+      "label": "CCPorted",
+      "count": 22,
+      "empty": false
+    },
+    {
+      "tag": "gdb:selenite",
+      "label": "Selenite",
+      "count": 266,
+      "empty": false
+    },
+    {
+      "tag": "gdb:radon",
+      "label": "Radon",
+      "count": 302,
+      "empty": false
+    },
+    {
+      "tag": "gdb:truffled",
+      "label": "Truffled",
+      "count": 0,
+      "empty": true
+    },
+    {
+      "tag": "gdb:totally-science",
+      "label": "Totally Science",
+      "count": 0,
+      "empty": true
+    },
+    {
+      "tag": "gdb:petezah",
+      "label": "PeteZah",
+      "count": 1121,
+      "empty": false
+    },
+    {
+      "tag": "gdb:frogies-arcade",
+      "label": "frogie's arcade",
+      "count": 0,
+      "empty": true
+    },
+    {
+      "tag": "gdb:space",
+      "label": "Space",
+      "count": 0,
+      "empty": true
+    },
+    {
+      "tag": "gdb:boredom",
+      "label": "Boredom",
+      "count": 11,
+      "empty": false
+    },
+    {
+      "tag": "gdb:dogeub",
+      "label": "dogeub",
+      "count": 20739,
+      "empty": false
+    },
+    {
+      "tag": "gdb:utopia",
+      "label": "Utopia Education",
+      "count": 275,
+      "empty": false
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-08-23",
+      "counts": {
+        "gdb:unblockedzone": 166,
+        "gdb:gn-math": 815,
+        "gdb:luminsdk": 815,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 815,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30095,
+      "unique_games": 25786
+    },
+    {
+      "date": "2026-08-29",
+      "counts": {
+        "gdb:unblockedzone": 166,
+        "gdb:gn-math": 829,
+        "gdb:luminsdk": 829,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 829,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30137,
+      "unique_games": 25794
+    },
+    {
+      "date": "2026-08-30",
+      "counts": {
+        "gdb:unblockedzone": 169,
+        "gdb:gn-math": 829,
+        "gdb:luminsdk": 829,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 829,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30140,
+      "unique_games": 25794
+    },
+    {
+      "date": "2026-08-31",
+      "counts": {
+        "gdb:unblockedzone": 189,
+        "gdb:gn-math": 829,
+        "gdb:luminsdk": 829,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 829,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30160,
+      "unique_games": 25814
+    },
+    {
+      "date": "2026-09-01",
+      "counts": {
+        "gdb:unblockedzone": 189,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30172,
+      "unique_games": 25818
+    },
+    {
+      "date": "2026-09-02",
+      "counts": {
+        "gdb:unblockedzone": 188,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30171,
+      "unique_games": 25817
+    },
+    {
+      "date": "2026-09-03",
+      "counts": {
+        "gdb:unblockedzone": 188,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30171,
+      "unique_games": 25817
+    },
+    {
+      "date": "2026-09-04",
+      "counts": {
+        "gdb:unblockedzone": 188,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30171,
+      "unique_games": 25817
+    },
+    {
+      "date": "2026-09-05",
+      "counts": {
+        "gdb:unblockedzone": 188,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30171,
+      "unique_games": 25817
+    },
+    {
+      "date": "2026-09-06",
+      "counts": {
+        "gdb:unblockedzone": 188,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30171,
+      "unique_games": 25817
+    },
+    {
+      "date": "2026-09-07",
+      "counts": {
+        "gdb:unblockedzone": 188,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30171,
+      "unique_games": 25817
+    },
+    {
+      "date": "2026-09-08",
+      "counts": {
+        "gdb:unblockedzone": 188,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 250,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30171,
+      "unique_games": 25817
+    },
+    {
+      "date": "2026-09-14",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-15",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-16",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-17",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-18",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-19",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-20",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-21",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-22",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-23",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-24",
+      "counts": {
+        "gdb:unblockedzone": 185,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30416,
+      "unique_games": 26056
+    },
+    {
+      "date": "2026-09-25",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30231,
+      "unique_games": 25948
+    },
+    {
+      "date": "2026-09-26",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30231,
+      "unique_games": 25948
+    },
+    {
+      "date": "2026-09-27",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30231,
+      "unique_games": 25948
+    },
+    {
+      "date": "2026-09-28",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30231,
+      "unique_games": 25948
+    },
+    {
+      "date": "2026-09-29",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 833,
+        "gdb:luminsdk": 833,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 833,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30231,
+      "unique_games": 25948
+    },
+    {
+      "date": "2026-09-30",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 837,
+        "gdb:luminsdk": 837,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 837,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30243,
+      "unique_games": 25952
+    },
+    {
+      "date": "2026-10-01",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 837,
+        "gdb:luminsdk": 837,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 837,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30243,
+      "unique_games": 25952
+    },
+    {
+      "date": "2026-10-02",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 837,
+        "gdb:luminsdk": 837,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 837,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30243,
+      "unique_games": 25952
+    },
+    {
+      "date": "2026-10-03",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 837,
+        "gdb:luminsdk": 837,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 837,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30243,
+      "unique_games": 25952
+    },
+    {
+      "date": "2026-10-04",
+      "counts": {
+        "gdb:unblockedzone": 0,
+        "gdb:gn-math": 837,
+        "gdb:luminsdk": 837,
+        "gdb:noahs-tutoring": 406,
+        "gdb:elite-games": 325,
+        "gdb:ultimate-game-stash": 2446,
+        "gdb:seraph": 500,
+        "gdb:chicken-kings-vault": 821,
+        "gdb:lucide": 837,
+        "gdb:sdxp": 0,
+        "gdb:duckmath": 498,
+        "gdb:ccported": 22,
+        "gdb:selenite": 266,
+        "gdb:radon": 302,
+        "gdb:truffled": 0,
+        "gdb:totally-science": 0,
+        "gdb:petezah": 1121,
+        "gdb:frogies-arcade": 0,
+        "gdb:space": 0,
+        "gdb:boredom": 11,
+        "gdb:dogeub": 20739,
+        "gdb:utopia": 275
+      },
+      "total_entries": 30243,
+      "unique_games": 25952
+    }
+  ],
+  "latest_changes": {
+    "date": "2026-10-04",
+    "is_baseline": false,
+    "by_catalog": {
+      "gdb:unblockedzone": {
+        "label": "Unblockedzone",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:gn-math": {
+        "label": "gn-math",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:luminsdk": {
+        "label": "Lumin SDK",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:noahs-tutoring": {
+        "label": "Noah's Tutoring",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:elite-games": {
+        "label": "Elite Games",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:ultimate-game-stash": {
+        "label": "Ultimate Game Stash",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:seraph": {
+        "label": "Seraph",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:chicken-kings-vault": {
+        "label": "Chicken King's Vault",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:lucide": {
+        "label": "Lucide",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:sdxp": {
+        "label": "SDXP",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:duckmath": {
+        "label": "DuckMath",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:ccported": {
+        "label": "CCPorted",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:selenite": {
+        "label": "Selenite",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:radon": {
+        "label": "Radon",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:truffled": {
+        "label": "Truffled",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:totally-science": {
+        "label": "Totally Science",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:petezah": {
+        "label": "PeteZah",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:frogies-arcade": {
+        "label": "frogie's arcade",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:space": {
+        "label": "Space",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:boredom": {
+        "label": "Boredom",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:dogeub": {
+        "label": "dogeub",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      },
+      "gdb:utopia": {
+        "label": "Utopia Education",
+        "added": [],
+        "removed": [],
+        "added_count": 0,
+        "removed_count": 0,
+        "added_truncated": 0,
+        "removed_truncated": 0
+      }
+    },
+    "all": {
+      "added": [],
+      "removed": [],
+      "added_count": 0,
+      "removed_count": 0,
+      "added_truncated": 0,
+      "removed_truncated": 0
+    }
+  },
+  "modifications": [
+    {
+      "date": "2026-10-04",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-10-03",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-10-02",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-10-01",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-30",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:gn-math",
+        "gdb:lucide",
+        "gdb:luminsdk"
+      ],
+      "added": 12,
+      "removed": 0,
+      "by_catalog": [
+        {
+          "tag": "gdb:gn-math",
+          "label": "gn-math",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "tag": "gdb:lucide",
+          "label": "Lucide",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "tag": "gdb:luminsdk",
+          "label": "Lumin SDK",
+          "added": 4,
+          "removed": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-28",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-27",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-26",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-25",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:unblockedzone"
+      ],
+      "added": 0,
+      "removed": 185,
+      "by_catalog": [
+        {
+          "tag": "gdb:unblockedzone",
+          "label": "Unblockedzone",
+          "added": 0,
+          "removed": 185
+        }
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-23",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-22",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-21",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-20",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-19",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-18",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-17",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-16",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-15",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-14",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:duckmath",
+        "gdb:unblockedzone"
+      ],
+      "added": 249,
+      "removed": 4,
+      "by_catalog": [
+        {
+          "tag": "gdb:duckmath",
+          "label": "DuckMath",
+          "added": 248,
+          "removed": 0
+        },
+        {
+          "tag": "gdb:unblockedzone",
+          "label": "Unblockedzone",
+          "added": 1,
+          "removed": 4
+        }
+      ]
+    },
+    {
+      "date": "2026-09-08",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-07",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-06",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-05",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-04",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-03",
+      "kind": "diff",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    },
+    {
+      "date": "2026-09-02",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:unblockedzone"
+      ],
+      "added": 0,
+      "removed": 1,
+      "by_catalog": [
+        {
+          "tag": "gdb:unblockedzone",
+          "label": "Unblockedzone",
+          "added": 0,
+          "removed": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-01",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:gn-math",
+        "gdb:lucide",
+        "gdb:luminsdk"
+      ],
+      "added": 12,
+      "removed": 0,
+      "by_catalog": [
+        {
+          "tag": "gdb:gn-math",
+          "label": "gn-math",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "tag": "gdb:lucide",
+          "label": "Lucide",
+          "added": 4,
+          "removed": 0
+        },
+        {
+          "tag": "gdb:luminsdk",
+          "label": "Lumin SDK",
+          "added": 4,
+          "removed": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-08-31",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:unblockedzone"
+      ],
+      "added": 20,
+      "removed": 0,
+      "by_catalog": [
+        {
+          "tag": "gdb:unblockedzone",
+          "label": "Unblockedzone",
+          "added": 20,
+          "removed": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-08-30",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:unblockedzone"
+      ],
+      "added": 5,
+      "removed": 2,
+      "by_catalog": [
+        {
+          "tag": "gdb:unblockedzone",
+          "label": "Unblockedzone",
+          "added": 5,
+          "removed": 2
+        }
+      ]
+    },
+    {
+      "date": "2026-08-29",
+      "kind": "diff",
+      "catalogs_touched": [
+        "gdb:gn-math",
+        "gdb:lucide",
+        "gdb:luminsdk"
+      ],
+      "added": 42,
+      "removed": 0,
+      "by_catalog": [
+        {
+          "tag": "gdb:gn-math",
+          "label": "gn-math",
+          "added": 14,
+          "removed": 0
+        },
+        {
+          "tag": "gdb:lucide",
+          "label": "Lucide",
+          "added": 14,
+          "removed": 0
+        },
+        {
+          "tag": "gdb:luminsdk",
+          "label": "Lumin SDK",
+          "added": 14,
+          "removed": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-08-23",
+      "kind": "baseline",
+      "catalogs_touched": [],
+      "added": 0,
+      "removed": 0,
+      "by_catalog": []
+    }
+  ],
+  "_note": "Built by scripts/build_gdb_stats.py. Live UI may also refresh counts via game-db-search.js."
+}

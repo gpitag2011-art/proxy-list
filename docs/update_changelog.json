@@ -1,0 +1,341 @@
+{
+  "_note": "Archived site update notices. Regenerate history with: python3 scripts/build_update_changelog.py",
+  "entries": [
+    {
+      "version": "v7.4",
+      "revision": "r302",
+      "released": "October 2, 2026",
+      "update_notice": "### New\n- Added GitHub links to proxies that have source code available/self hosting\n- Added many links from 1NobleCyber/ThreatFeed list\n\n### Removed\n- Removed Tung Tung links because they have many malicious popups and are basically unsafe unless you have adblock"
+    },
+    {
+      "version": "v7.3.10",
+      "revision": "r301",
+      "released": "October 1, 2026",
+      "update_notice": "### Fixed\n- Fixed malformed usernames appearing in the contributor list"
+    },
+    {
+      "version": "v7.3.9",
+      "revision": "r300",
+      "released": "October 1, 2026",
+      "update_notice": "### Fixed\n- Fixed a bug that caused headers in update notices show formatting"
+    },
+    {
+      "version": "v7.3.8",
+      "revision": "r299",
+      "released": "September 30, 2026",
+      "update_notice": "### New\n- You can now recieve comments on your feedback, appeals, and link requests"
+    },
+    {
+      "version": "v7.3.6",
+      "revision": "r298",
+      "released": "September 30, 2026",
+      "update_notice": "### Fixed\n- Fixed critical bugs that occurred that broke access to the list on Scramjet and Ultraviolet. Users on those proxies should be able to view the site properly again.\n- Added system to detect bad saved site data and replaces it with new data to fix an issue that causes the list to not load anything. If you're still having problems, [click here](./fix-loading/index.html)."
+    },
+    {
+      "version": "v7.3.6",
+      "revision": "r297",
+      "released": "September 30, 2026",
+      "update_notice": "### Fixed\n- Fixed critical bugs that occurred that broke access to the list on Scramjet and Ultraviolet. Users on those proxies should be able to view the site properly again."
+    },
+    {
+      "version": "v7.3.5",
+      "revision": "r295",
+      "released": "September 27, 2026",
+      "update_notice": "### Fixed\n- Fixed bug causing user to be unable to scroll list on searches due to a 20 row cap"
+    },
+    {
+      "version": "v7.3.4",
+      "revision": "r292",
+      "released": "September 22, 2026",
+      "update_notice": "### Fixed\n- Fixed bug with automatic dead link checker not running because the total number of queued links exceeded the maximum allowed to be deleted due to a hardcoded safeguard to prevent mass deletion, this is fixed and next link checks should succeed"
+    },
+    {
+      "version": "v7.3.3",
+      "revision": "r291",
+      "released": "September 20, 2026",
+      "update_notice": "### New\n- Updated filter data for recently added links"
+    },
+    {
+      "version": "v7.3.2",
+      "revision": "r290",
+      "released": "September 19, 2026",
+      "update_notice": "### New\n- Added 2900+ links with filter data currently being processed"
+    },
+    {
+      "version": "v7.3.1",
+      "revision": "r289",
+      "released": "September 19, 2026",
+      "update_notice": "### Fixed\n- Fixed bug where link checks weren't succeeding\n- Removed 101 broken gn-math links"
+    },
+    {
+      "version": "v7.3",
+      "revision": "r288",
+      "released": "September 19, 2026",
+      "update_notice": "### Fixed\n- Fixed rating caching causing ratings to show 0/0\n- Optimized how ratings and clicks are saved through Cloudflare Workers to prevent hitting API limits\n- Fixed a bug occurring when accessing the site on Scramjet and Ultraviolet that caused 404 errors on Firebase/Workers\n\n### New\n- Added a welcome tutorial"
+    },
+    {
+      "version": "v7.2",
+      "revision": "r287",
+      "released": "September 14, 2026",
+      "update_notice": "### New\n- Added a button that allows hiding/showing the sidebar\n- Made filters persist in browser local storage so that you don't have to reapply them each time you go to another page on the site\n- Added 4.9k+ links (no filter data yet)\n- Added debug menu with quick options to some debug settings which can be activated with the backtick key (`) (requires debug mode to be enabled)\n- Made performance menu draggable\n- Made user agent bar minimizable\n- Added list culling preview, which allows you to view how the list is culling/load data in the site\n- Optimized mobile UI\n- Optimized list culling to save performance\n- Added zooming on graphs\n- Improved graph readability\n\n### Fixed\n- Fixed hitboxes on graph items\n- Security fixes\n- Fixed a bug that caused database changes to not be tracked"
+    },
+    {
+      "version": "v7.1.2",
+      "revision": "r286",
+      "released": "September 8, 2026",
+      "update_notice": "- Restored the list again after another false-positive mass purge (`5c9cbfd`); reset consecutive failure streaks and added link-checker safety rails so a single bad run cannot wipe tens of thousands of links\n- Restored ~41,700 sorted links that a false-positive link-check run purged on September 8, 2026 (list, sections, and filter coverage returned to the pre-purge snapshot)\n- Redesigned sync submissions action to avoid Firebase quota exhaustion\n- Readded 2 contributed links back to the list that were removed because of a false positive from the link check action\n- Added 600+ links (no filter data yet)"
+    },
+    {
+      "version": "v7.1.2",
+      "revision": "r285",
+      "released": "September 8, 2026",
+      "update_notice": "- Restored ~41,700 sorted links that a false-positive link-check run purged on September 8, 2026 (list, sections, and filter coverage returned to the pre-purge snapshot)\n- Redesigned sync submissions action to avoid Firebase quota exhaustion\n- Readded 2 contributed links back to the list that were removed because of a false positive from the link check action\n- Added 600+ links (no filter data yet)"
+    },
+    {
+      "version": "v7.1.2",
+      "revision": "r283",
+      "released": "September 3, 2026",
+      "update_notice": "- Redesigned sync submissions action to avoid Firebase quota exhaustion\n- Readded 2 contributed links back to the list that were removed because of a false positive from the link check action\n- Added 600+ links (no filter data yet)"
+    },
+    {
+      "version": "v7.1.1",
+      "revision": "r282",
+      "released": "August 30, 2026",
+      "update_notice": "Added game database snapshots to the link check run so that they are captured automatically"
+    },
+    {
+      "version": "v7.1",
+      "revision": "r279",
+      "released": "August 29, 2026",
+      "update_notice": "- Mobile detection is now done by user agent instead of screen size to fix a bug where resizing a window to a resolution that is very small would make the site think you're on a phone\n- Fixed a bug where the button to exit the Quick Search Palette would show the keybind even though it is not possible to do that on mobile, it now shows an X icon\n- Fixed a bug causing GitHub notifications to not work properly, it is recommended you sign out then sign back in to view your notifications properly\n- Fixed bugs causing Firebase to return HTML error 429 because too many requests were occurring\n- Removed Fyinx from game database for legal reasons (returned HTML error 451 on API contact, view more on this error [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/451)), we apologize for any inconvience this may cause. This is out of our control.\n- Added 19,000+ links (no filter data at the time of writing this yet)\n- 20 new pending sections\n- 3 unsorted links added"
+    },
+    {
+      "version": "v7.0.4",
+      "revision": "r278",
+      "released": "August 25, 2026",
+      "update_notice": "# Fixed bug causing recent submissions to not appear"
+    },
+    {
+      "version": "v7.0.3",
+      "revision": "r277",
+      "released": "August 23, 2026",
+      "update_notice": "# Fixed a bug that caused games not to be searched properly\n\n# Optimized the search bar"
+    },
+    {
+      "version": "v7.0.3",
+      "revision": "r277",
+      "released": "August 23, 2026",
+      "update_notice": "# Fixed a bug where submissions weren't being added to the list\n\n# Security fixes"
+    },
+    {
+      "version": "v7.0.2",
+      "revision": "r276",
+      "released": "August 23, 2026",
+      "update_notice": "# Fixed a bug where submissions weren't being added to the list\n\n# Security fixes\n\n# Game Database Browser\nYou can now visually browse through game databases by going to the new game database browser, which can be accessed using the \"Game browser\" button in the sidebar. You will be able to see games across all or selected databases, search for games, view info and preview images for games (if applicable), and view all links that have your desired game. I hope that by creating this people will be able to get more use out of the list by being able to find what they specifically want to do on the site, and there will be more dedicated tags for specific site features coming later so you can have an easier time making choices on links and finding what you require based on your needs.\n\n# Steam API support\nIn order to give some games additional info, the Steam Web API has been integrated to give many games things like detailed descriptions, better game covers, publisher/developer info, and game preview images. This only applies to games on Steam.\n\n# Game statistics\nStatistics have also been added to game databases with game amounts, latest games added, latest modifications made to the database source and games added/removed. As of right now many of these stats won't show any value as they were just implemented."
+    },
+    {
+      "version": "v7.0.1",
+      "revision": "r275",
+      "released": "August 23, 2026",
+      "update_notice": "# Approved links auto-publish\nApproved link submissions now sync into the list and the site automatically after approval, so paste-into-list.md is no longer required.\n\n# Game Database Browser\nYou can now visually browse through game databases by going to the new game database browser, which can be accessed using the \"Game browser\" button in the sidebar. You will be able to see games across all or selected databases, search for games, view info and preview images for games (if applicable), and view all links that have your desired game. I hope that by creating this people will be able to get more use out of the list by being able to find what they specifically want to do on the site, and there will be more dedicated tags for specific site features coming later so you can have an easier time making choices on links and finding what you require based on your needs.\n\n# Steam API support\nIn order to give some games additional info, the Steam Web API has been integrated to give many games things like detailed descriptions, better game covers, publisher/developer info, and game preview images. This only applies to games on Steam.\n\n# Game statistics\nStatistics have also been added to game databases with game amounts, latest games added, latest modifications made to the database source and games added/removed. As of right now many of these stats won't show any value as they were just implemented."
+    },
+    {
+      "version": "v7.0",
+      "revision": "r274",
+      "released": "August 23, 2026",
+      "update_notice": "# Game Database Browser\nYou can now visually browse through game databases by going to the new game database browser, which can be accessed using the \"Game browser\" button in the sidebar. You will be able to see games across all or selected databases, search for games, view info and preview images for games (if applicable), and view all links that have your desired game. I hope that by creating this people will be able to get more use out of the list by being able to find what they specifically want to do on the site, and there will be more dedicated tags for specific site features coming later so you can have an easier time making choices on links and finding what you require based on your needs.\n\n# Steam API support\nIn order to give some games additional info, the Steam Web API has been integrated to give many games things like detailed descriptions, better game covers, publisher/developer info, and game preview images. This only applies to games on Steam.\n\n# Game statistics\nStatistics have also been added to game databases with game amounts, latest games added, latest modifications made to the database source and games added/removed. As of right now many of these stats won't show any value as they were just implemented."
+    },
+    {
+      "version": "v7.0",
+      "revision": "r274",
+      "released": "August 23, 2026",
+      "update_notice": "# Game Database Browser\nYou can now visually browse through game databases by going to the new game database browser, which can be accessed using the \"Game browser\" button in the sidebar. You will be able to see games across all or selected databases, search for games, view info and preview images for games (if applicable), and view all links that have your desired game. I hope that by creating this people will be able to get more use out of the list by being able to find what they specifically want to do on the site, and there will be more dedicated tags for specific site features coming later so you can have an easier time making choices on links and finding what you require based on your needs.\n\n# Steam API support\nIn order to give some games additional info, the Steam Web API has been integrated to give many games things like detailed descriptions, better game covers, publisher/developer info, and game preview images. This only applies to games on Steam."
+    },
+    {
+      "version": "v6.6",
+      "revision": "r271",
+      "released": "August 20, 2026",
+      "update_notice": "# Find Games More Easily\nA new feature is currently in beta which allows you to search for games directly through the search on our site and then get links shown to you that have that game available, which has been done by obtaining game database APIs and adding them to the capabilities of links that have them, then having the site contact the API of the database to find that game."
+    },
+    {
+      "version": "v6.5",
+      "revision": "r270",
+      "released": "August 20, 2026",
+      "update_notice": "# Global Link Recheck\nI rechecked every domain existing on the site, so filter data should be accurate and up to date now.\n\n# Featured Section\nThere is now a new featured section showing the top proxies that users love most. You can also view all of that proxy's links by clicking the \"View all links\" button.\n\n# Quick Search Palette\nThe Quick Search Palette can be activated by pressing Ctrl+Y (Windows/ChromeOS/Linux) Cmd+Y (macOS) to quickly search for providers, URLs, contributors, and more on the list. This feature was inspired by Fern's Command Palette feature.\n\n# Optimizations\nI made even more optimizations to ensure that Firebase does not reach quota as fast, and I have fixed the bugs with link clicks not tracking, so community features should be fully working as of now.\n\n# Misc/Bugfixes\nFixed a bug where storage.googleapis.com would report as blocked even though it is unblocked on the iboss filter. It is blocked in some conditions, so to ensure most accurate results it is listed as unblocked globally on all URLs with this domain as it starts out that way\nFixed a bug where link clicks were untracked due to Firebase bugs\nFixed a bug where searching something and clicking enter would autofill with a suggested result instead of searching what the user entered\nFixed a bug where contributed links were not automatically added to the main list\nFixed a bug where statistics would not load properly\nFixed a bug where user statistics would be inaccurate because of user doubling\nFixed a bug where users on Scramjet and Ultraviolet would not be able to load the list because of differences between raw network and proxy services, so I made some direct optimizations on a few test systems under these conditions to fix. You may still experience some issues while on proxies which are still being resolved\nFixed a bug where users on Scramjet could not load most opened links sections\nFixed a bug where all link clicks would show as 3 dots or as 0\nClick count reads are now cached via Cloudflare's cache API to reduce Firebase quota limitations\nAdded attributions to the about page so you can see the backend and other software that makes the Proxy List possible, with licenses if applicable\nFixed a bug where Nettle Web section would not show all links even with filter options disabled"
+    },
+    {
+      "version": "v6.4",
+      "revision": "r269",
+      "released": "August 17, 2026",
+      "update_notice": "# Thousands of Links\nOver 25,000 links were added, making this the biggest link drop ever. Most of them are Cherri and Arctic mirrors, and should generally be unblocked by most filters.\n\n# Optimizations\nTo handle all of these links, optimizations have been made in order to keep performance reasonable while also hosting all of these links. Lower-end devices may experience problems as memory usage naturally will be higher now.\n\n# Bugfixes\n- Fixed a bug where clicks were not tracked.\n- Fixed a bug where jsdelivr link clicks weren't tracked.\n- Removed unused Google AdSense embeds to improve performance.\n- Optimized the search bar, although I am aware there might be some issues with performance while using it due to the massive amount of links that are loaded that will be fixed at a later point.\n- Fixed a bug where ratings weren't tracked.\n- Fixed a bug where user statistics weren't tracked properly.\n- Fixed a bug where provider/domain statistics were broken or weren't tracked properly.\n- Fixed a bug where scrolling would show a white box at the bottom of the screen.\n- Fixed a bug where there was a slight delay between loads or the chunk wouldn't load at all.\n- Firebase bugfixes"
+    },
+    {
+      "version": "v6.3.1",
+      "revision": "r268",
+      "released": "August 17, 2026",
+      "update_notice": "Fixed a bug that causes you to be repeatedly signed out when going on different pages within the site.\nAdded the ability to copy HTML code and text of the offline versions of the site\nSecurity fixes"
+    },
+    {
+      "version": "v6.3.1",
+      "revision": "r267",
+      "released": "August 15, 2026",
+      "update_notice": "Fixed a bug that causes you to be repeatedly signed out when going on different pages within the site.\nAdded the ability to copy HTML code and text of the offline versions of the site\nSecurity fixes\n\n# Random link\nYou can now choose a random link by clicking the \"Random link\" button highlighted in purple on the sidebar. It will go through every provider and once it lands on one, you will get a random link from that provider.\n\n# Developer/debug settings\nThere is now debug mode for developers and also to improve development. You can fire test notifications, view your user agent, see memory and CPU estimations, and console warnings, errors, and chunk loadtime data.\n\n# Manual resizing\nYou can now manually select the mode you want the site to format the site to (mobile, desktop, or auto detect).\n\n# Save data\nYou can now import and export your saved filter and settings data in the Settings menu."
+    },
+    {
+      "version": "v6.3",
+      "revision": "r266",
+      "released": "August 13, 2026",
+      "update_notice": "# Offline downloading\nYou can now save the Proxy List as an HTML, text, or markdown file for offline viewing when the list is blocked or not accessable. Note that the offline version has all online features stripped and is really just the bare bones of the list.\n\n# Random link\nYou can now choose a random link by clicking the \"Random link\" button highlighted in purple on the sidebar. It will go through every provider and once it lands on one, you will get a random link from that provider.\n\n# Developer/debug settings\nThere is now debug mode for developers and also to improve development. You can fire test notifications, view your user agent, see memory and CPU estimations, and console warnings, errors, and chunk loadtime data.\n\n# Manual resizing\nYou can now manually select the mode you want the site to format the site to (mobile, desktop, or auto detect).\n\n# Save data\nYou can now import and export your saved filter and settings data in the Settings menu."
+    },
+    {
+      "version": "v6.2.1",
+      "revision": "r265",
+      "released": "August 11, 2026",
+      "update_notice": "- Added a button that allows for skipping or temporarily disabling link click stats if it takes more than 10 seconds to load on the loading screen as I noticed it takes significantly longer to load, especially on slow or unreliable networks.\n- Added 452 links (currently have no filter data at the moment)."
+    },
+    {
+      "version": "v6.2",
+      "revision": "r264",
+      "released": "August 10, 2026",
+      "update_notice": "- Users can now submit multiple links instead of having to submit one at a time.\n- Added check to GitHub URL when requesting a link to ensure that the URL is a github.com URL and that the account linked actually exists or not.\n- Fixed a bug where links wouldn't appear when they were added from the link request form.\n- Improved moderation tools.\n\nNew links will be added soon and all filter data will also be updated soon to prepare for the influx of users that the list will be seeing in the coming weeks."
+    },
+    {
+      "version": "v6.1",
+      "revision": "r263",
+      "released": "August 09, 2026",
+      "update_notice": "Added user statistics where you can see most active times, active users over times, top users, and more."
+    },
+    {
+      "version": "v6.0.1",
+      "revision": "r261",
+      "released": "August 05, 2026",
+      "update_notice": "Security fixes"
+    },
+    {
+      "version": "v6.0",
+      "revision": "r260",
+      "released": "August 05, 2026",
+      "update_notice": "# 6.0 - Statistics and Systems Update\nWith this update, lots of changes have been made to community features and also adding statistics, giving a birds-eye view over everything related to links.\n\n# Statistics\nThe statistics page allows you to see clear stats on top providers, categories, domains, most common block reasons, most blocked domains, most popular domains, and much more. This gives a clear view into what filters most commonly block and also what is most popular in the list.\n\n# Community\nYou can now suggest bugfixes and feature requests directly through the Proxy List! Simply fill out the form and submit, and if we think it's good it will be implemented! (You must have an account in order to access this feature and other community features.)\n\n# Moderation\nThere is now a moderation system and users can be punished for their actions if they constantly submit garbage links/requests, have offensive usernames, and offensive folder names. You can report folders by clicking the \"Report\" button on any folder. If you feel your suspension was unfair or a mistake, you can even appeal by going to the Contribute page and submitting an appeal form. You can only fill this form out if your account is currently under suspension. (You must have an account in order to access these features and other community features.)\n\n# Additional Notes\nWhen it is needed, I have added notes to several proxies and URLs to give the user more info on specific quirks that the website has to keep you informed and help you make a choice on what proxy to use.\n\n# Misc Fixes\n- Fixed a bug where the Community Folder icon was slightly off center.\n- Fixed a bug where submitting a link request would fail due to a Firebase error.\n- Fixed a bug where link checks weren't being run ever.\n- Fixed a bug where mirror sites wouldn't have access to certain features or were broken.\n- Fixed a bug where open counts would load very slowly.\n- Fixed a bug where the string \"-\" would be shown as an option in the protocols and capabilities sort options.\n- Fixed a bug where emojis would show as corrupted text due to improper formatting.\n- Fixed a bug where liking a link would fail due to a Firebase error.\n- Fixed a bug where punished users could still access certain unprotected features.\n- Fixed an exploit that allowed a bot to inflate clicks on a specific URL.\n- Fixed a bug where users couldn't make a new folder because the site thought they weren't signed in.\n- Fixed a bug where changing a filter through the settings menu show no results other than the default.\n- Fixed a bug where the sign in button would still appear even if the user was signed in.\n- Fixed security bugs.\n- Cleaned up unsorted list."
+    },
+    {
+      "version": "v5.5.1",
+      "revision": "r259",
+      "released": "August 03, 2026",
+      "update_notice": "Security fix"
+    },
+    {
+      "version": "v5.5",
+      "revision": "r258",
+      "released": "August 03, 2026",
+      "update_notice": "- Added an additional notes section in the link summaries\n- Added about section\n- Added setting to hide additional notes\n- Added lots of links\n- Fixed bug where \"-\" would show as an option in capabilities and protocols filters"
+    },
+    {
+      "version": "v5.4.1",
+      "revision": "r257",
+      "released": "August 02, 2026",
+      "update_notice": "Removed over 1.9K bad unsorted links. This should hopefully help with the clutter that was previously there with all the random links."
+    },
+    {
+      "version": "v5.4.1",
+      "revision": "r252",
+      "released": "August 02, 2026",
+      "update_notice": "- Added over 2,000 links (some have incomplete data).\n- Fixed a bug causing link checks to fail and accumulate instead of removing after 3 fails\n- Security fixes"
+    },
+    {
+      "version": "v5.3",
+      "revision": "r249",
+      "released": "July 10, 2026",
+      "update_notice": "- Added settings so you can save settings locally and improve performance\n- Added themes\n- Security fixes"
+    },
+    {
+      "version": "v5.2.1",
+      "revision": "r242",
+      "released": "July 08, 2026",
+      "update_notice": "- Changed background theme from dark blue/gray to black/gray for visibility\n- Security fixes"
+    },
+    {
+      "version": "v5.2",
+      "revision": "r241",
+      "released": "May 31, 2026",
+      "update_notice": "Added mirror links and embed support; maintenance fixes and updated filter data."
+    },
+    {
+      "version": "v5.1.3",
+      "revision": "r165",
+      "released": "May 30, 2026",
+      "update_notice": "Made maintenance fixes and updated outdated filter data."
+    },
+    {
+      "version": "v5.1.2",
+      "revision": "r159",
+      "released": "May 17, 2026",
+      "update_notice": "### Fixes\n- Fixed a bug that caused the refresh to update notice only appear when the version it requests is already active."
+    },
+    {
+      "version": "v5.1.1",
+      "revision": "r119",
+      "released": "May 17, 2026",
+      "update_notice": "### Fixes\n- Fixed a bug that caused the update notice message to appear every time the revision string was updated."
+    },
+    {
+      "version": "v5.1",
+      "revision": "r118",
+      "released": "May 17, 2026",
+      "update_notice": "### UI Redesign\nI've updated the UI with icons and better formatting for people on mobile so that full links are actually visible on mobile.\n\n### Unlisted Folders\nLink folders can now be shared as unlisted, allowing only people with the link to view the folder. If the link is private, no one except for the owner can view it. Public functionality was unchanged. Unlisted links do not show up publicly.\n\n### Fixes\n- Fixed a bug that caused accounts to be repeatedly signed out (this was fixed 5/15 with a remote hotfix).\n- Fixed a bug that caused link ratings to not work (this was automatically fixed 5/15).\n- Fixed a bug that caused extremely long load times when sorting by highest rated links.\n- Fixed a bug that caused contributed links to be incorrectly counted.\n- Fixed a bug that caused some sections to have inaccurate data.\n- Fixed a bug with Google Form link contributions that caused contributor names to not be hyperlinked properly.\n- Fixed a bug that caused links to show vertically instead of horizontally on mobile, making links very hard to read.\n- Fixed a bug where saving links would not save them properly (this seems to have been mostly fixed after the remote hotfix on 5/15).\n- Fixed a bug where saving links would not make the star yellow, making it hard to differentiate saved from unsaved links.\n- Fixed a bug that caused proxied users to have long load times. Optimizations have been made to lower loading.\n- Fixed a bug with the link checker bot not removing links."
+    },
+    {
+      "version": "v5.0",
+      "revision": "r113",
+      "released": "May 15, 2026",
+      "update_notice": "### Accounts and Connections\nYou can now make an account on the site and even connect using GitHub and Google. Making an account gives you access to community features such as link ratings, saving links, sharing link folders, and more.\n\n### Saving Links\nOnce you create an account and sign in, you can now save links and access them by going to your account name and going to \"Saved links\". This is where you can also make link folders and share your favorite links with the community.\n\n### Community - Rating Links\nLink ratings are working again — you can thumbs-up or thumbs-down links and sort by highest rated or most saved.\nYou can now upvote/downvote links and sort by most favorable links by rated by the community. You will no longer have to keep trying links until you find one that's actually good.\n\n### Community - Sharing Links\nYou can now share links globally using the new folder system. It can be accessed the same way you access saved links, and clicking \"New Folder\". Add your links, then check the \"Public\" checkmark, and you are all set! You can also copy the direct link to your folder to share with others. Community shared link folders also support community ratings."
+    },
+    {
+      "version": "v5.0",
+      "revision": "r108",
+      "released": "May 15, 2026",
+      "update_notice": "### Accounts and Connections\nYou can now make an account on the site and even connect using GitHub and Google. Making an account gives you access to community features such as link ratings, saving links, sharing link folders, and more.\n\n### Saving Links\nOnce you create an account and sign in, you can now save links and access them by going to your account name and going to \"Saved links\". This is where you can also make link folders and share your favorite links with the community.\n\n### Community - Rating Links\n(At the time of writing, link ratings are currently down.)\nYou can now upvote/downvote links and sort by most favorable links by rated by the community. You will no longer have to keep trying links until you find one that's actually good.\n\n### Community - Sharing Links\nYou can now share links globally using the new folder system. It can be accessed the same way you access saved links, and clicking \"New Folder\". Add your links, then check the \"Public\" checkmark, and you are all set! You can also copy the direct link to your folder to share with others. Community shared link folders also support community ratings."
+    },
+    {
+      "version": "v4.4.1",
+      "revision": "r104",
+      "released": "May 12, 2026",
+      "update_notice": "### Info Update\nUpdated the info on a few sections to allow better sorting of links"
+    },
+    {
+      "version": "v4.4",
+      "revision": "r94",
+      "released": "May 12, 2026",
+      "update_notice": "### Bugfix\nFixed a bug where the contributed link count would decrease when a link was removed via the link removal script. Contributed link counts couldn't be restored from their previous values before the link removal bot took away links but the current link count is unchanged and cannot be changed by the link removal bot."
+    },
+    {
+      "version": "v4.2",
+      "revision": "r82",
+      "released": "May 07, 2026",
+      "update_notice": "### Better Contributions\nContributors, contribution rules, and ways to contribute are now all on the [Contribute page](https://yourworstnightmare1.github.io/proxy-list/contribute).\n\n### Sorting Unsorted Links\nLinks that are already on our main list are being automatically removed from the unsorted list to minimize the amount of unsorted links we have here. I am also working on moving unsorted links to the main list finally, it takes time as there is nearly 2000 links.\n\n### Security Patches\nFixed a security vulnerability."
+    },
+    {
+      "version": "v4.1",
+      "revision": "r71",
+      "released": "May 06, 2026",
+      "update_notice": "### Sort Popular Links\nYou can now sort most open links by providers, filters, and opens. This should make it easier for you to find working links faster.\n\n### UI Improvements\nAdded a back to top button, which takes you back to the top of the webpage\n\n### Bugfixes\n- Fixed an issue where scrolling did not load the next chunk properly, leading to the list to abruptly end\n- Fixed an issue where the dead link checker wasn't finding links properly\n- Fixed an issue where certain text/buttons were the incorrect font"
+    },
+    {
+      "version": "v4.0.1",
+      "revision": "r68",
+      "released": "May 05, 2026",
+      "update_notice": "### Bugfix\nQuick update to fix an issue causing links to not be checked and removed when dead."
+    },
+    {
+      "version": "v4.0",
+      "revision": "r67",
+      "released": "May 02, 2026",
+      "update_notice": "### Firebase Integration\nThe Proxy List is now fully integrated with Firebase, and you can now see the site's most popular links.\n\n### UI Changes\nThe UI has been slightly changed to make the site cleaner and more user-friendly. We have moved the top buttons to the side. Oh, and there's loading screens now.\n\n### Hide Unchecked Links\nYou can now hide links that have not been checked for blocked filters, giving a more accurate link count estimate when hiding blocked links and making it easier to actually find unblocked links.\n\n### New Filter Options\nI have added support for the following filters now:\n\n- CleanBrowsing\n\n- Control D\n\n- Gaggle\n\n- Hapara\n\n- Smoothwall\n\n- Zscaler\n\n(Smoothwall and Zscaler users: The link check bot has been having issues checking your filter for blocked/unblocked status, so most links will probably just show warning. This is a relatively new filter to the bot, so it is likely being fixed as of now.)\n\n### Performance Improvements\nMuch needed performance improvements were done, which has lowered the site's estimated memory usage from ~400MB to only ~150MB to allow breathing room for lower-end devices that will access the site.\n\n### More Links\nAs usual with most updates, we of course gave you some more links. This time we have 500+ links added, with the total onsite links (as of the time of writing this message) being 4,546."
+    },
+    {
+      "version": "v3.0.1",
+      "revision": "r66",
+      "released": "April 27, 2026",
+      "update_notice": "### Forget About Testing Links\nYou can now see if links are blocked/unblocked, making it way easier to find working links (there's a lot of them!) You can also select your web filter and get alerted if they are blocked, and hide links that may be blocked.\n\n### Always Be In The Know\nYou can now view important announcements from this page instead of having to go to the README.md to view them.\n\n### Sorted Links Don't Fit Your Needs?\nYou can always view [Unsorted Links](https://yourworstnightmare1.github.io/proxy-list/unsorted.html) to view a random assortment of nearly 2000+ links. Note that these links are not checked for filter blocks."
+    }
+  ]
+}

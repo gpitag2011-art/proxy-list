@@ -1,0 +1,33 @@
+{
+  "contributors": {
+    "0800": {
+      "links_total": 8,
+      "contributor_url": "https://github.com/0800WebDev"
+    },
+    "1NobleCyber": {
+      "links_total": 736,
+      "contributor_url": "https://github.com/1NobleCyber"
+    },
+    "Anonymous Contributor": {
+      "links_total": 3,
+      "contributor_url": null
+    },
+    "Info_Broker": {
+      "links_total": 2,
+      "contributor_url": null
+    },
+    "Vexo Sirramenboi": {
+      "links_total": 95,
+      "contributor_url": "https://github.com/Vexo-Sirramenboi"
+    },
+    "Vexo-Sirramenboi": {
+      "links_total": 11,
+      "contributor_url": "https://github.com/Vexo-Sirramenboi"
+    },
+    "yourworstnightmare1": {
+      "links_total": 52602,
+      "contributor_url": "https://github.com/yourworstnightmare1"
+    }
+  },
+  "_note": "links_total is cumulative; convert_list_to_json.py updates with max(previous, current live count)."
+}

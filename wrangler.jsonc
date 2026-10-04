@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "proxy-list",
+  "main": "workers/site.js",
+  "compatibility_date": "2026-06-01",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "docs",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": [
+      "/api/*",
+      "/__/auth",
+      "/__/auth/*",
+      "/__/firebase/*"
+    ]
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}

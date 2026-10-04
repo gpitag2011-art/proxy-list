@@ -1,0 +1,626 @@
+rules_version = '2';
+// Deploy in Firebase Console → Firestore → Rules.
+// Uses Anonymous Auth from the site; tighten further if you enable App Check.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function ratingSmallDelta(oldV, newV) {
+      return newV is int
+        && oldV is int
+        && newV >= 0
+        && newV - oldV <= 1
+        && newV - oldV >= -1;
+    }
+
+    function intDeltaAtMostOne(oldV, newV) {
+      return newV is int
+        && oldV is int
+        && newV >= oldV
+        && newV - oldV <= 1;
+    }
+
+    function statsRecentHourOk(oldStats, newStats) {
+      return newStats.recentHourCount == oldStats.recentHourCount
+        || (
+          newStats.recentHourCount is int
+          && newStats.recentHourCount >= 0
+          && newStats.recentHourCount <= 8
+          && (
+            (
+              (oldStats.lastSubmissionAt == null
+                || oldStats.lastSubmissionAt < request.time - duration.value(1, 'h'))
+              && newStats.recentHourCount == 1
+            )
+            || (
+              !(oldStats.lastSubmissionAt == null
+                || oldStats.lastSubmissionAt < request.time - duration.value(1, 'h'))
+              && newStats.recentHourCount == oldStats.recentHourCount + 1
+            )
+          )
+        );
+    }
+
+    function statsSelfCreateOk() {
+      let d = request.resource.data;
+      return d.keys().hasOnly([
+              'uid', 'submissionsTotal', 'duplicatesAttempted', 'rejectedTotal',
+              'submitBlocked', 'recentHourCount', 'lastSubmissionAt', 'updated',
+              'warningCount', 'suspensionCount'
+            ])
+        && d.uid == request.auth.uid
+        && d.submissionsTotal is int
+        && d.duplicatesAttempted is int
+        && d.rejectedTotal is int
+        && d.submissionsTotal >= 0
+        && d.submissionsTotal <= 1
+        && d.duplicatesAttempted >= 0
+        && d.duplicatesAttempted <= 1
+        && d.rejectedTotal == 0
+        && d.submitBlocked == false
+        && d.recentHourCount is int
+        && d.recentHourCount >= 0
+        && d.recentHourCount <= 1
+        && (!('warningCount' in d) || d.warningCount == 0)
+        && (!('suspensionCount' in d) || d.suspensionCount == 0);
+    }
+
+    function statsSelfUpdateOk() {
+      let d = request.resource.data;
+      let r = resource.data;
+      return d.keys().hasOnly([
+              'uid', 'submissionsTotal', 'duplicatesAttempted', 'rejectedTotal',
+              'submitBlocked', 'recentHourCount', 'lastSubmissionAt', 'updated',
+              'warningCount', 'suspensionCount'
+            ])
+        && d.uid == r.uid
+        && d.uid == request.auth.uid
+        && d.rejectedTotal == r.rejectedTotal
+        && (!('warningCount' in d)
+            || (d.warningCount is int
+                && d.warningCount == (('warningCount' in r) ? r.warningCount : 0)))
+        && (!('suspensionCount' in d)
+            || (d.suspensionCount is int
+                && d.suspensionCount == (('suspensionCount' in r) ? r.suspensionCount : 0)))
+        && intDeltaAtMostOne(r.submissionsTotal, d.submissionsTotal)
+        && intDeltaAtMostOne(r.duplicatesAttempted, d.duplicatesAttempted)
+        && (d.submitBlocked == r.submitBlocked
+            || (d.submitBlocked == true && r.submitBlocked == false)
+            || (d.submitBlocked == false && r.submitBlocked == true && notSubmissionBanned()))
+        && statsRecentHourOk(r, d);
+    }
+
+    function validUrlKeyHash(hash) {
+      return hash is string && hash.matches('^[a-f0-9]{64}$');
+    }
+
+    function userProfileFieldsOk(d) {
+      return (!('siteUsername' in d)
+            || (d.siteUsername is string
+                && d.siteUsername.matches('^[a-zA-Z0-9_]{3,20}$')))
+        && (!('profilePhotoDataUrl' in d)
+            || (d.profilePhotoDataUrl is string
+                && d.profilePhotoDataUrl.size() <= 140000))
+        && (!('usernameChangedAt' in d)
+            || d.usernameChangedAt is list)
+        && (!('linkListSort' in d)
+            || d.linkListSort is string)
+        && (!('githubLogin' in d)
+            || d.githubLogin == null
+            || (d.githubLogin is string && d.githubLogin.size() <= 39))
+        && (!('settings' in d) || d.settings is map)
+        && (!('savedLinks' in d)
+            || (d.savedLinks is list && d.savedLinks.size() <= 5000));
+    }
+
+    /** New folders set visibility + isPublic; legacy docs may only have isPublic. */
+    function savedFolderPrivacyPairOk(d) {
+      return (d.visibility is string
+          && (d.visibility == 'public' || d.visibility == 'unlisted' || d.visibility == 'private')
+          && d.isPublic is bool
+          && d.isPublic == (d.visibility == 'public'))
+        || (!(d.visibility is string) && d.isPublic is bool);
+    }
+
+    function isSignedInNonAnonymous() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+
+    function isSubmissionAdmin() {
+      return isSignedInNonAnonymous()
+        && exists(/databases/$(database)/documents/config/submissions)
+        && request.auth.uid in get(/databases/$(database)/documents/config/submissions).data.adminUids;
+    }
+
+    function banDoc(uid) {
+      return get(/databases/$(database)/documents/contributorBans/$(uid)).data;
+    }
+
+    function banTimedOut(uid) {
+      return exists(/databases/$(database)/documents/contributorBans/$(uid))
+        && banDoc(uid).keys().hasAny(['until'])
+        && banDoc(uid).until is timestamp
+        && banDoc(uid).until < request.time;
+    }
+
+    function notSubmissionBanned() {
+      return !exists(/databases/$(database)/documents/contributorBans/$(request.auth.uid))
+        || banTimedOut(request.auth.uid);
+    }
+
+    // Account / both suspensions block community features (ratings, etc). Form-only bans do not.
+    function notCommunityFeatureBanned() {
+      return !exists(/databases/$(database)/documents/contributorBans/$(request.auth.uid))
+        || banTimedOut(request.auth.uid)
+        || (('scope' in banDoc(request.auth.uid)) && banDoc(request.auth.uid).scope == 'form');
+    }
+
+    function statsNotSubmitBlocked() {
+      return !exists(/databases/$(database)/documents/contributorStats/$(request.auth.uid))
+        || !('submitBlocked' in get(/databases/$(database)/documents/contributorStats/$(request.auth.uid)).data)
+        || get(/databases/$(database)/documents/contributorStats/$(request.auth.uid)).data.submitBlocked == false;
+    }
+
+    function validSubmissionUrl(u) {
+      return u is string
+        && u.size() >= 10
+        && u.size() <= 2048
+        && (u.matches('^https://.*') || u.matches('^http://.*'));
+    }
+
+    match /link_clicks/{docId} {
+      // Public reads for "Most opened". Writes are Worker/Admin only (IP rate-limited API).
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    // Daily open aggregates for Statistics provider time-series (Worker writes only).
+    match /click_daily/{dayId} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    // Presence aggregates for Statistics → Users (Worker/Admin writes only).
+    match /presence_daily/{dayId} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    match /presence_monthly/{monthId} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    match /presence_user_totals/{uidHash} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && request.resource.data.keys().hasOnly([
+          'siteUsername', 'profilePhotoDataUrl', 'usernameChangedAt', 'updated',
+          'settings', 'savedLinks', 'linkListSort', 'githubLogin'
+        ])
+        && userProfileFieldsOk(request.resource.data);
+      allow update: if request.auth != null
+        && request.auth.uid == userId
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'siteUsername', 'profilePhotoDataUrl', 'usernameChangedAt', 'updated',
+          'settings', 'savedLinks', 'linkListSort', 'githubLogin'
+        ])
+        && userProfileFieldsOk(request.resource.data);
+      allow delete: if request.auth != null
+        && request.auth.uid == userId
+        && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+    // Lowercase username → uid (claim on create; only owner may update/delete).
+    match /usernames/{uname} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && uname.matches('^[a-z0-9_]{3,20}$')
+        && request.resource.data.keys().hasOnly(['uid', 'updated'])
+        && request.resource.data.uid == request.auth.uid
+        && !exists(/databases/$(database)/documents/usernames/$(uname));
+      allow update: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && uname.matches('^[a-z0-9_]{3,20}$')
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid', 'updated']);
+      allow delete: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && resource.data.uid == request.auth.uid;
+    }
+
+    // Shared saved-link folders: owner edits sync live to all readers (onSnapshot).
+    // Anyone may read folders that are publicly listed OR unlisted by link (?folder=). Writes keep isPublic in sync so isPublic == true <=> visibility public / legacy public.
+    // Firestore QUERY rules must line up with allow read predicates: listing uses where(isPublic == true); that proves isPublic matches the first clause below — required or permission-denied.
+    // Private (isPublic false): only the signed-in non-anonymous owner may read unless visibility is still unlisted (link-only opens).
+    match /savedFolders/{folderId} {
+      allow read: if resource.data.isPublic == true
+        || resource.data.visibility == 'unlisted'
+        || (request.auth != null
+            && request.auth.token.firebase.sign_in_provider != 'anonymous'
+            && request.auth.uid == resource.data.ownerUid);
+      allow create: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 200
+        && request.resource.data.visibility is string
+        && savedFolderPrivacyPairOk(request.resource.data)
+        && request.resource.data.items is list
+        && request.resource.data.items.size() <= 3000
+        && (!request.resource.data.keys().hasAny(['ownerLabel'])
+            || (request.resource.data.ownerLabel is string
+                && request.resource.data.ownerLabel.size() <= 120));
+      allow update: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == resource.data.ownerUid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 200
+        && savedFolderPrivacyPairOk(request.resource.data)
+        && request.resource.data.items is list
+        && request.resource.data.items.size() <= 3000
+        && (!request.resource.data.keys().hasAny(['ownerLabel'])
+            || (request.resource.data.ownerLabel is string
+                && request.resource.data.ownerLabel.size() <= 120));
+      allow delete: if isSubmissionAdmin()
+        || (request.auth != null
+            && request.auth.token.firebase.sign_in_provider != 'anonymous'
+            && resource.data.ownerUid == request.auth.uid);
+    }
+
+    // Community link thumbs (aggregate + one vote doc per signed-in user per link hash).
+    match /linkRatings/{linkHash} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && linkHash.matches('^[a-f0-9]{64}$')
+        && request.resource.data.keys().hasOnly(['up', 'down', 'norm', 'updated'])
+        && request.resource.data.up is int
+        && request.resource.data.down is int
+        && request.resource.data.up >= 0
+        && request.resource.data.down >= 0
+        && request.resource.data.norm is string
+        && request.resource.data.norm.size() <= 2048
+        && ((request.resource.data.up == 1 && request.resource.data.down == 0)
+            || (request.resource.data.up == 0 && request.resource.data.down == 1));
+      allow update: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && linkHash.matches('^[a-f0-9]{64}$')
+        && request.resource.data.keys().hasOnly(['up', 'down', 'norm', 'updated'])
+        && request.resource.data.up is int
+        && request.resource.data.down is int
+        && request.resource.data.up >= 0
+        && request.resource.data.down >= 0
+        && request.resource.data.up <= 500000
+        && request.resource.data.down <= 500000
+        && request.resource.data.norm is string
+        && request.resource.data.norm.size() <= 2048
+        && ratingSmallDelta(resource.data.up, request.resource.data.up)
+        && ratingSmallDelta(resource.data.down, request.resource.data.down);
+    }
+    match /linkRatingVotes/{voteId} {
+      allow get: if request.auth != null
+        && voteId.matches('^' + request.auth.uid + '_[a-f0-9]{64}$');
+      allow list: if false;
+      allow create, update: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && voteId == request.auth.uid + '_' + request.resource.data.linkHash
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.linkHash is string
+        && request.resource.data.linkHash.matches('^[a-f0-9]{64}$')
+        && request.resource.data.norm is string
+        && request.resource.data.norm.size() <= 2048
+        && request.resource.data.vote is int
+        && (request.resource.data.vote == 1 || request.resource.data.vote == -1)
+        && request.resource.data.keys().hasOnly(['uid', 'linkHash', 'norm', 'vote', 'updated']);
+      allow delete: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && resource.data.uid == request.auth.uid
+        && voteId == request.auth.uid + '_' + resource.data.linkHash;
+    }
+
+    // How many signed-in users currently have this normalized URL in their saved list (±1 per save/unsave).
+    match /linkSaveCounts/{linkHash} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && linkHash.matches('^[a-f0-9]{64}$')
+        && request.resource.data.keys().hasOnly(['count', 'norm', 'updated'])
+        && request.resource.data.count is int
+        && request.resource.data.count >= 0
+        && request.resource.data.count <= 1
+        && request.resource.data.norm is string
+        && request.resource.data.norm.size() <= 2048;
+      allow update: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && linkHash.matches('^[a-f0-9]{64}$')
+        && request.resource.data.keys().hasOnly(['count', 'norm', 'updated'])
+        && request.resource.data.count is int
+        && request.resource.data.count >= 0
+        && request.resource.data.count <= 500000
+        && request.resource.data.norm == resource.data.norm
+        && ratingSmallDelta(resource.data.count, request.resource.data.count);
+    }
+
+    match /folderRatings/{folderId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && folderId.matches('^[a-zA-Z0-9_-]{1,700}$')
+        && request.resource.data.keys().hasOnly(['up', 'down', 'updated'])
+        && request.resource.data.up is int
+        && request.resource.data.down is int
+        && request.resource.data.up >= 0
+        && request.resource.data.down >= 0
+        && ((request.resource.data.up == 1 && request.resource.data.down == 0)
+            || (request.resource.data.up == 0 && request.resource.data.down == 1));
+      allow update: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && folderId.matches('^[a-zA-Z0-9_-]{1,700}$')
+        && request.resource.data.keys().hasOnly(['up', 'down', 'updated'])
+        && request.resource.data.up is int
+        && request.resource.data.down is int
+        && request.resource.data.up >= 0
+        && request.resource.data.down >= 0
+        && request.resource.data.up <= 500000
+        && request.resource.data.down <= 500000
+        && ratingSmallDelta(resource.data.up, request.resource.data.up)
+        && ratingSmallDelta(resource.data.down, request.resource.data.down);
+    }
+    match /folderRatingVotes/{voteId} {
+      allow get: if request.auth != null
+        && voteId.matches('^' + request.auth.uid + '_[a-zA-Z0-9_-]{1,700}$');
+      allow list: if false;
+      allow create, update: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && voteId == request.auth.uid + '_' + request.resource.data.folderId
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.folderId is string
+        && request.resource.data.folderId.matches('^[a-zA-Z0-9_-]{1,700}$')
+        && request.resource.data.vote is int
+        && (request.resource.data.vote == 1 || request.resource.data.vote == -1)
+        && request.resource.data.keys().hasOnly(['uid', 'folderId', 'vote', 'updated']);
+      allow delete: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider != 'anonymous'
+        && notCommunityFeatureBanned()
+        && resource.data.uid == request.auth.uid
+        && voteId == request.auth.uid + '_' + resource.data.folderId;
+    }
+
+    // On-site link submissions (pending review). Admins review in docs/admin/submissions.html.
+    match /config/submissions {
+      allow read: if isSignedInNonAnonymous();
+      allow write: if false;
+    }
+
+    match /linkSubmissions/{submissionId} {
+      allow read: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous() && resource.data.submitterUid == request.auth.uid);
+      allow create: if isSignedInNonAnonymous()
+        && notSubmissionBanned()
+        && statsNotSubmitBlocked()
+        && request.resource.data.submitterUid == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && validSubmissionUrl(request.resource.data.url)
+        && request.resource.data.urlKey is string
+        && request.resource.data.urlKey.size() >= 10
+        && request.resource.data.urlKey.size() <= 2048
+        && validUrlKeyHash(request.resource.data.urlKeyHash)
+        // Use *After so a batched write of pendingSubmissionKeys + linkSubmissions can succeed.
+        && existsAfter(/databases/$(database)/documents/pendingSubmissionKeys/$(request.resource.data.urlKeyHash))
+        && getAfter(/databases/$(database)/documents/pendingSubmissionKeys/$(request.resource.data.urlKeyHash)).data.submitterUid == request.auth.uid
+        && getAfter(/databases/$(database)/documents/pendingSubmissionKeys/$(request.resource.data.urlKeyHash)).data.urlKey == request.resource.data.urlKey
+        && request.resource.data.provider is string
+        && request.resource.data.provider.size() > 0
+        && request.resource.data.provider.size() <= 120
+        && request.resource.data.isNewProvider is bool
+        && request.resource.data.submitterLabel is string
+        && request.resource.data.submitterLabel.size() > 0
+        && request.resource.data.submitterLabel.size() <= 120
+        && request.resource.data.submitterGithub is string
+        && request.resource.data.submitterGithub.size() <= 39
+        && (request.resource.data.submitterGithub.size() == 0
+            || request.resource.data.submitterGithub.matches('^[a-zA-Z0-9]([a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$'))
+        && (!('submitterEmail' in request.resource.data)
+            || (request.resource.data.submitterEmail is string
+                && request.resource.data.submitterEmail.size() <= 320))
+        && (!request.resource.data.keys().hasAny(['optionalNote'])
+            || (request.resource.data.optionalNote is string
+                && request.resource.data.optionalNote.size() <= 500));
+      allow update, delete: if isSubmissionAdmin();
+    }
+
+    // One pending row per normalized URL; doc id is SHA-256(urlKey).
+    match /pendingSubmissionKeys/{urlKeyHash} {
+      allow read: if isSignedInNonAnonymous();
+      allow create: if isSignedInNonAnonymous()
+        && notSubmissionBanned()
+        && statsNotSubmitBlocked()
+        && validUrlKeyHash(urlKeyHash)
+        && !exists(/databases/$(database)/documents/pendingSubmissionKeys/$(urlKeyHash))
+        && request.resource.data.keys().hasOnly(['urlKey', 'urlKeyHash', 'submitterUid', 'created'])
+        && request.resource.data.urlKeyHash == urlKeyHash
+        && request.resource.data.submitterUid == request.auth.uid
+        && request.resource.data.urlKey is string
+        && request.resource.data.urlKey.size() >= 10
+        && request.resource.data.urlKey.size() <= 2048;
+      allow delete: if isSubmissionAdmin();
+    }
+
+    match /contributorBans/{uid} {
+      allow read: if request.auth != null && (request.auth.uid == uid || isSubmissionAdmin());
+      allow create: if isSubmissionAdmin();
+      // Admins can always update bans; suspended users may mark that they used their one appeal.
+      allow update: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous()
+            && request.auth.uid == uid
+            && request.resource.data.diff(resource.data).affectedKeys()
+                .hasOnly(['appealSubmitted', 'appealSubmittedAt'])
+            && request.resource.data.appealSubmitted == true
+            && (!('appealSubmitted' in resource.data) || resource.data.appealSubmitted != true));
+      // Admins can always remove bans; users may clear their own after a timed ban expires.
+      allow delete: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous() && request.auth.uid == uid && banTimedOut(uid));
+    }
+
+    match /contributorStats/{uid} {
+      allow read: if request.auth != null && (request.auth.uid == uid || isSubmissionAdmin());
+      allow create: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous()
+            && request.auth.uid == uid
+            && statsSelfCreateOk());
+      allow update: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous()
+            && request.auth.uid == uid
+            && statsSelfUpdateOk());
+      allow delete: if false;
+    }
+
+    // Bug reports / feature & QoL requests from the Contribute page.
+    match /siteFeedback/{feedbackId} {
+      allow read: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous() && resource.data.submitterUid == request.auth.uid);
+      allow create: if isSignedInNonAnonymous()
+        && notSubmissionBanned()
+        && request.resource.data.submitterUid == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.type is string
+        && (request.resource.data.type == 'bug'
+            || request.resource.data.type == 'feature'
+            || request.resource.data.type == 'qol')
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 200
+        && request.resource.data.body is string
+        && request.resource.data.body.size() > 0
+        && request.resource.data.body.size() <= 2000
+        && request.resource.data.submitterLabel is string
+        && request.resource.data.submitterLabel.size() > 0
+        && request.resource.data.submitterLabel.size() <= 120
+        && (!('submitterGithub' in request.resource.data)
+            || request.resource.data.submitterGithub == null
+            || (request.resource.data.submitterGithub is string
+                && request.resource.data.submitterGithub.size() <= 39))
+        && (!('submitterEmail' in request.resource.data)
+            || (request.resource.data.submitterEmail is string
+                && request.resource.data.submitterEmail.size() <= 320));
+      allow update, delete: if isSubmissionAdmin();
+    }
+
+    // Reports about community folder titles or creator display names.
+    match /folderReports/{reportId} {
+      allow read: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous() && resource.data.reporterUid == request.auth.uid);
+      allow create: if isSignedInNonAnonymous()
+        && notCommunityFeatureBanned()
+        && request.resource.data.folderId is string
+        && request.resource.data.folderId.matches('^[a-zA-Z0-9_-]{1,700}$')
+        && reportId == request.auth.uid + '_' + request.resource.data.folderId
+        && exists(/databases/$(database)/documents/savedFolders/$(request.resource.data.folderId))
+        && get(/databases/$(database)/documents/savedFolders/$(request.resource.data.folderId)).data.ownerUid
+            != request.auth.uid
+        && request.resource.data.reporterUid == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.folderTitle is string
+        && request.resource.data.folderTitle.size() > 0
+        && request.resource.data.folderTitle.size() <= 200
+        && request.resource.data.folderOwnerUid is string
+        && request.resource.data.folderOwnerUid.size() > 0
+        && request.resource.data.folderOwnerUid.size() <= 128
+        && request.resource.data.folderOwnerLabel is string
+        && request.resource.data.folderOwnerLabel.size() <= 120
+        && request.resource.data.reportFolderName is bool
+        && request.resource.data.reportCreatorName is bool
+        && (request.resource.data.reportFolderName == true
+            || request.resource.data.reportCreatorName == true)
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() > 0
+        && request.resource.data.reason.size() <= 2000
+        && request.resource.data.reporterLabel is string
+        && request.resource.data.reporterLabel.size() > 0
+        && request.resource.data.reporterLabel.size() <= 120
+        && (!('reporterGithub' in request.resource.data)
+            || request.resource.data.reporterGithub == null
+            || (request.resource.data.reporterGithub is string
+                && request.resource.data.reporterGithub.size() <= 39));
+      allow update, delete: if isSubmissionAdmin();
+    }
+
+    // Per-user toast notifications (form outcomes, suspensions, etc.).
+    match /userNotifications/{notifId} {
+      allow read: if isSignedInNonAnonymous()
+        && resource.data.uid == request.auth.uid;
+      allow create: if (
+          isSubmissionAdmin()
+          || (
+            isSignedInNonAnonymous()
+            && request.resource.data.uid == request.auth.uid
+            && request.resource.data.kind == 'wait_lifted'
+          )
+        )
+        && request.resource.data.uid is string
+        && request.resource.data.uid.size() > 0
+        && request.resource.data.kind is string
+        && request.resource.data.kind.size() > 0
+        && request.resource.data.kind.size() <= 40
+        && request.resource.data.read == false
+        && (!('reason' in request.resource.data)
+            || (request.resource.data.reason is string
+                && request.resource.data.reason.size() <= 2000))
+        && (!('message' in request.resource.data)
+            || (request.resource.data.message is string
+                && request.resource.data.message.size() <= 500));
+      allow update: if isSignedInNonAnonymous()
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read', 'readAt'])
+        && request.resource.data.read == true
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.kind == resource.data.kind;
+      allow delete: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous() && resource.data.uid == request.auth.uid);
+    }
+
+    // Suspension appeals from Contribute.
+    match /suspensionAppeals/{appealId} {
+      allow read: if isSubmissionAdmin()
+        || (isSignedInNonAnonymous() && resource.data.submitterUid == request.auth.uid);
+      allow create: if isSignedInNonAnonymous()
+        && exists(/databases/$(database)/documents/contributorBans/$(request.auth.uid))
+        && !banTimedOut(request.auth.uid)
+        && (!('appealSubmitted' in banDoc(request.auth.uid))
+            || banDoc(request.auth.uid).appealSubmitted != true)
+        && request.resource.data.submitterUid == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.body is string
+        && request.resource.data.body.size() > 0
+        && request.resource.data.body.size() <= 2000
+        && request.resource.data.submitterLabel is string
+        && request.resource.data.submitterLabel.size() > 0
+        && request.resource.data.submitterLabel.size() <= 120
+        && (!('submitterGithub' in request.resource.data)
+            || request.resource.data.submitterGithub == null
+            || (request.resource.data.submitterGithub is string
+                && request.resource.data.submitterGithub.size() <= 39))
+        && (!('submitterEmail' in request.resource.data)
+            || (request.resource.data.submitterEmail is string
+                && request.resource.data.submitterEmail.size() <= 320))
+        && (!('banBannedAtMs' in request.resource.data)
+            || request.resource.data.banBannedAtMs is int
+            || request.resource.data.banBannedAtMs is float);
+      allow update, delete: if isSubmissionAdmin();
+    }
+  }
+}
